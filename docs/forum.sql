@@ -3,26 +3,77 @@ create database forum charset=UTF8 collate utf8_general_ci;
 use forum;
 
 create table usuarios(
-    id_user integer primary auto_increment key not null,
-    email varchar(35) not null unique,
-    senha varchar(20) not null,
-    nome_user varchar(30) not null,
+    id_user int primary key auto_increment,
+    email varchar(60) unique not null,
+    senha varchar(30) not null,
+    nome_user varchar(20) not null,
     avatar mediumblob
 );
 
-create table posts(
-    id_user integer auto_increment not null,
-    pergunta varchar(200),
-    reposta varchar(200),
-    likes integer,
-    dislikes integer,
-    foreign key (id_user) references usuarios(id_user)
+create table categorias(
+    id_categoria int primary key auto_increment,
+    nome_categoria varchar(30) not null,
+    descricao varchar(200) not null
 );
 
-create table categorias(
-    id_categoria integer auto_increment not null,
-    tipo varchar(10) not null,
-    nome_categoria varchar(25) not null,
+create table sub_categoria(
+    id_subcat int primary key auto_increment,
+    id_categoria int not null,
+    nome_subcat varchar(30) not null,
+    descricao varchar(100) not null,
+    foreign key (id_categoria) references categorias(id_categoria)
+);
+
+create table posts(
+    id_pub int primary key auto_increment,
+    id_user int not null,
+    data DATETIME not null,
+    pergunta varchar(1000) not null,
+    likes integer,
+    dislikes integer,
+    img mediumblob,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_subcat) references sub_categoria(id_subcat)
+);
+
+create table comentarios(
+    id_comentario int primary key auto_increment,
+    id_user int not null,
+    id_pub int not null,
+    comentario varchar(1000) not null,
+    data DATETIME not null,
+    likes integer,
+    dislikes integer,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_pub) references posts(id_pub)
+);
+
+create table respostas(
+    id_resp int primary key auto_increment,
+    id_comentario int not null,
+    id_user int not null,
+    resposta varchar(500) not null,
+    likes integer,
+    dislikes integer,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_comentario) references comentarios(id_comentario)
+);
+
+create table favoritos (
+    id int not null primary key auto_increment,
+    id_user int not null,
+    id_categoria int not null,
+    foreign key (id_categoria) references categorias(id_categoria),
+    foreign key (id_user) references usuarios(id)
 );
 
 show tables;
+
+describe usuarios;
+describe categorias;
+describe sub_categoria;
+describe posts;
+describe comentarios;
+describe respostas;
+describe favoritos;
+
