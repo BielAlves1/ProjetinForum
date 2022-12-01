@@ -3,65 +3,140 @@ create database forum charset=UTF8 collate utf8_general_ci;
 use forum;
 
 create table usuarios(
-    id_user integer primary key auto_increment not null,
-    email varchar(35) not null unique,
-    senha varchar(20) not null,
-    nome_user varchar(30) not null,
-    tipo_avatar varchar(5) not null,
+    id_user int primary key auto_increment,
+    email varchar(60) unique not null,
+    senha varchar(30) not null,
+    nome_user varchar(20) unique not null,
     avatar mediumblob
 );
 
 create table categorias(
-    id_categoria integer primary key auto_increment not null,
-    tipo varchar(10) not null,
-    nome_categoria varchar(25) not null,
-    qntd_users integer not null
+    id_categoria int primary key auto_increment,
+    nome_categoria varchar(30) not null,
+    descricao varchar(200) not null
+);
+
+create table sub_categorias(
+    id_subcat int primary key auto_increment,
+    id_categoria int not null,
+    nome_subcat varchar(30) not null,
+    descricao varchar(100) not null,
+    foreign key (id_categoria) references categorias(id_categoria)
 );
 
 create table posts(
-    id_post integer primary key auto_increment not null,
-    id_user integer not null,
-    id_categoria integer not null,
-    pergunta varchar(200),
+    id_pub int primary key auto_increment,
+    id_user int not null,
+    id_subcat int not null,
+    data DATETIME not null,
+    pergunta varchar(1000) not null,    
     likes integer,
     dislikes integer,
-    foreign key (id_user) references usuarios(id_user) on delete cascade,
-    foreign key (id_categoria) references categorias(id_categoria) on delete cascade
+    img mediumblob,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_subcat) references sub_categorias(id_subcat)
+);
+
+create table comentarios(
+    id_comentario int primary key auto_increment,
+    id_user int not null,
+    id_pub int not null,
+    comentario varchar(1000) not null,
+    data DATETIME not null,
+    likes integer,
+    dislikes integer,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_pub) references posts(id_pub)
 );
 
 create table respostas(
-    id_resp integer primary key auto_increment not null,
-    id_user integer not null,
-    id_post integer not null,
-    reposta varchar(200),
+    id_resp int primary key auto_increment,
+    id_comentario int not null,
+    id_user int not null,
+    resposta varchar(500) not null,
     likes integer,
     dislikes integer,
-    foreign key (id_post) references posts(id_post) on delete cascade,
-    foreign key (id_user) references usuarios(id_user) on delete cascade
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_comentario) references comentarios(id_comentario)
 );
+
+create table favoritos (
+    id_fav int not null primary key auto_increment,
+    id_user int not null,
+    id_categoria int not null,
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_categoria) references categorias(id_categoria)
+);
+
+show tables;
 
 describe usuarios;
 describe categorias;
+describe sub_categoria;
 describe posts;
+describe comentarios;
 describe respostas;
-show tables;
+describe favoritos;
 
-insert into usuarios values
-(default,"bolota@gmail.com","bo1234","bolotagem", '.png',load_file("C:/Users/Heitor/Desktop/ProjetinForum/assets/img_561543.png")),
-(default,"bebel@gmail.com","bel1234","Bebel cu de mel", '.png',load_file("C:/Users/Heitor/Desktop/ProjetinForum/assets/img_561543.png")),
-(default,"itimania@gmail.com","it1234","Italo", '.png',load_file("C:/Users/Heitor/Desktop/ProjetinForum/assets/img_561543.png"));
-insert into categorias values
-(default, "Quest", "Duvidas sobre a vida", 100),
-(default, "Futboll", "VaiBrasil?", 100),
-(default, "Tecnologia", "TecNews", 100);
-insert into posts values
-(default, 1, 1, "biel e guei?", 100,1),
-(default, 2, 2, "Vai Brasil", 1000,0),
-(default, 3, 3, "Computador Bala", 1,10);
-insert into respostas values
-(default, 1, 1, "ss", 100,1),
-(default, 2, 2, "ss", 1000,0),
-(default, 3, 3, "ss", 1,10);
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/users.CSV'
+INTO TABLE usuarios
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
 
--- select * from 
--- drop table 
+select * from usuarios;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/categorias.CSV'
+INTO TABLE categorias
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from categorias;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/sub_categorias.CSV'
+INTO TABLE sub_categorias
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from sub_categorias;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/posts.CSV'
+INTO TABLE posts
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from posts;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/comentarios.CSV'
+INTO TABLE comentarios
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from comentarios;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/respostas.CSV'
+INTO TABLE respostas
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from respostas;
+
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/favoritos.CSV'
+INTO TABLE favoritos
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from favoritos;
