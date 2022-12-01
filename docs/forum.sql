@@ -78,7 +78,7 @@ describe comentarios;
 describe respostas;
 describe favoritos;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/users.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/usuarios.CSV'
 INTO TABLE usuarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -87,7 +87,7 @@ IGNORE 1 ROWS;
 
 select * from usuarios;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/categorias.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/categorias.CSV'
 INTO TABLE categorias
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -96,7 +96,7 @@ IGNORE 1 ROWS;
 
 select * from categorias;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/sub_categorias.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/sub_categorias.CSV'
 INTO TABLE sub_categorias
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -105,7 +105,7 @@ IGNORE 1 ROWS;
 
 select * from sub_categorias;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/posts.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/posts.CSV'
 INTO TABLE posts
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -114,7 +114,7 @@ IGNORE 1 ROWS;
 
 select * from posts;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/comentarios.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/comentarios.CSV'
 INTO TABLE comentarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -123,7 +123,7 @@ IGNORE 1 ROWS;
 
 select * from comentarios;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/respostas.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/respostas.CSV'
 INTO TABLE respostas
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
@@ -132,7 +132,7 @@ IGNORE 1 ROWS;
 
 select * from respostas;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/favoritos.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/favoritos.CSV'
 INTO TABLE favoritos
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
