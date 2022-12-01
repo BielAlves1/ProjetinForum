@@ -6,7 +6,7 @@ create table usuarios(
     id_user int primary key auto_increment,
     email varchar(60) unique not null,
     senha varchar(30) not null,
-    nome_user varchar(20) not null,
+    nome_user varchar(20) unique not null,
     avatar mediumblob
 );
 
@@ -75,5 +75,6 @@ describe sub_categoria;
 describe posts;
 describe comentarios;
 describe respostas;
-describe favoritos;
+describe favorito;
+
 
