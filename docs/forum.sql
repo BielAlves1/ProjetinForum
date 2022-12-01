@@ -32,8 +32,7 @@ create table posts(
     likes integer,
     dislikes integer,
     img mediumblob,
-    foreign key (id_user) references usuarios(id_user),
-    foreign key (id_subcat) references sub_categoria(id_subcat)
+    foreign key (id_user) references usuarios(id_user)
 );
 
 create table comentarios(
@@ -60,11 +59,11 @@ create table respostas(
 );
 
 create table favoritos (
-    id int not null primary key auto_increment,
+    id_fav int not null primary key auto_increment,
     id_user int not null,
     id_categoria int not null,
-    foreign key (id_categoria) references categorias(id_categoria),
-    foreign key (id_user) references usuarios(id)
+    foreign key (id_user) references usuarios(id_user),
+    foreign key (id_categoria) references categorias(id_categoria)
 );
 
 show tables;
@@ -75,6 +74,6 @@ describe sub_categoria;
 describe posts;
 describe comentarios;
 describe respostas;
-describe favorito;
+describe favoritos;
 
 
