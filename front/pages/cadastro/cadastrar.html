@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/cadastro/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="form">
+        <input class="inputzin" type="email" name="email" placeholder="Email" required />
+        <input class="inputzin" type="password" name="senha" placeholder="Senha" required />
+        <input class="inputzin" type="password" name="Csenha" placeholder="Confirmar Senha" required />
+        <input class="inputzin" type="text" name="username" placeholder="Nome de Usuário" required />
+        <input type="file" name="avatar" id="fileCreate" onChange="toBase64create()" accept="image/jpeg, image/png" />
+        <button type="submit" id="cadastrar">Cadastrar</button>
+        <a href="../login/login.html" class="voltar">Já tem uma conta?</a>
+    </div>
+</body>
+<script src="../../scripts/cadastro/cadastro.js"></script>
+</html>
