@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background-color: #328ECB;
+}
+
+main {
+    background-color: #328ECB;
+    width: 100%;
+    height: auto;
+}
+
+#container {
+    border: 2px solid #004C82;  
+    border-radius: 10px;
+    display: flex;
+    margin-top: 5%;
+    margin-left: 60%;
+    background-color: #ffffff;
+    width: 30%;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
