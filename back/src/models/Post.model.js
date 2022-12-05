@@ -14,15 +14,14 @@ const toReadAll = () => {
     return 'SELECT * FROM posts';
 }
 
-const toReadUserName = (model) => {
+const toReadData = (model) => {
     return `SELECT * FROM posts WHERE data like '%${model.data}%'`;
 }
 
 const toUpdate = (model) => {
-    return `UPDATE usuarios SET 
-    senha = '${model.senha}', 
-    nome_user = '${model.nome_user}' 
-    WHERE id_user = '${model.id_user}'`;
+    return `UPDATE post SET 
+    pergunta = '${model.pergunta}'
+    WHERE id_pub = '${model.id_pub}'`;
 }
 
 const toDelete = (model) => {
@@ -33,7 +32,7 @@ module.exports = {
     toCreate,
     toAscii,
     toReadAll,
-    toReadUserName,
+    toReadData,
     toUpdate,
     toDelete
 }

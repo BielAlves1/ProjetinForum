@@ -23,6 +23,19 @@ const listarUsuario = (req, res) => {
     });
 }
 
+const login = (req, res) => {
+    user = req.body;
+
+    con.query(Usuario.toLogin(user), (err, result) => {
+        if (err == null) {
+            if (user.email == result[0].email && user.senha == result[0].senha)
+                res.status(200).json(Usuario.toAscii(result)).end();
+            else
+                res.status(400).json(err).end();
+        }
+    });
+}
+
 const cadastrarUsuario = async (req, res) => {
     con.query(Usuario.toCreate(req.body, req.file), (err, result) => {
         if (err == null) {
@@ -60,6 +73,7 @@ const excluirUsuario = (req, res) => {
 module.exports = {
     listarUsuarios,
     listarUsuario,
+    login,
     cadastrarUsuario,
     alterarUsuario,
     excluirUsuario

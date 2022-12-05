@@ -18,6 +18,10 @@ const toReadUserName = (model) => {
     return `SELECT * FROM usuarios WHERE nome_user like '%${model.nome_user}%'`;
 }
 
+const toLogin = (model) => {
+    return `SELECT * FROM usuarios WHERE email = '${model.email}'`;
+}
+
 const toUpdate = (model) => {
     return `UPDATE usuarios SET 
     senha = '${model.senha}', 
@@ -34,6 +38,7 @@ module.exports = {
     toAscii,
     toReadAll,
     toReadUserName,
+    toLogin,
     toUpdate,
     toDelete
 }
