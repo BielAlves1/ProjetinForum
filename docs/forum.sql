@@ -78,7 +78,7 @@ describe comentarios;
 describe respostas;
 describe favoritos;
 
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/usuarios.CSV'
+LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/data/usuarios.CSV'
 INTO TABLE usuarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
