@@ -22,6 +22,7 @@ body {
     background-color: #ffffff;
     width: 30%;
     height: 75vh;
+    box-shadow: 5px 5px 5px rgb(48, 48, 48);
 }
 
 .inputzin{
