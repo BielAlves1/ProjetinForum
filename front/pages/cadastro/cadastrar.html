@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +8,22 @@
     <link rel="stylesheet" href="../../styles/cadastro/cadastro.css">
     <title>Cadastro</title>
 </head>
+
 <body>
-    <div class="form">
-        <input class="inputzin" type="email" name="email" placeholder="Email" required />
-        <input class="inputzin" type="password" name="senha" placeholder="Senha" required />
-        <input class="inputzin" type="password" name="Csenha" placeholder="Confirmar Senha" required />
-        <input class="inputzin" type="text" name="username" placeholder="Nome de Usuário" required />
-        <input type="file" name="avatar" id="fileCreate" onChange="toBase64create()" accept="image/jpeg, image/png" />
-        <button type="submit" id="cadastrar">Cadastrar</button>
-        <a href="../login/login.html" class="voltar">Já tem uma conta?</a>
-    </div>
+    <form id="cadastro" class="modal">
+        <div class="form">
+            <input class="inputzin" id="email" type="email" name="email" placeholder="Email" required />
+            <input class="inputzin" id="senha" type="password" name="senha" placeholder="Senha" required />
+            <input class="inputzin" id="Csenha" type="password" name="Csenha" placeholder="Confirmar Senha" required />
+            <input class="inputzin" id="nome" type="text" name="username" placeholder="Nome de Usuário" required />
+            <label for="fileCreate" class="fileinp">Escolher uma foto</label>
+            <input type="file" name="avatar" id="fileCreate" onChange="toBase64create()" accept="image/jpeg, image/png"
+                style="display: none;" />
+            <button type="submit" id="cadastrar" value="Enviar">Cadastrar</button>
+            <a href="../login/login.html" class="voltar">Já tem uma conta?</a>
+        </div>
+    </form>
 </body>
 <script src="../../scripts/cadastro/cadastro.js"></script>
+
 </html>

@@ -22,10 +22,22 @@
         <div id="container">
             <div id="content">
                 <input type="text" placeholder="Email" class="email">
-                <input type="text" placeholder="Senha" class="senha">
+                <input type="password" placeholder="Senha" class="senha">
                 <button class="btnLogin" onclick="login()">Login</button>
-                <a href="" class="criar">Criar Conta</a>
+                <a href="../../pages/cadastro/cadastrar.html" class="criar">Criar Conta</a>
                 <a href="" class="esqueci">Esqueci minha senha</a>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div id="novo">
+                <div class="modalForm"> 
+                    <input type="text" id="email" placeholder="Digite seu Email..."/>
+                    <input type="password" id="senha" placeholder="Digite a nova senha..." disabled/>
+                </div>
+                <div class="modalFooter">
+                    <button onclick="modal.setAttribute('style','display:none')" class="btnEM">Cancelar</button>
+                    <button onclick="cadastrar()" class="btnCM">Alterar</button>
+                </div>
             </div>
         </div>
     </main>
