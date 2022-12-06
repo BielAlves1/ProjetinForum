@@ -5,7 +5,7 @@ const Usuario = require('../models/Usuario.model');
 const listarUsuarios = (req, res) => {
     con.query(Usuario.toReadAll(), (err, result) => {
         if (err == null) {
-            res.status(200).json(result).end();
+            res.status(200).json(Usuario.toAscii(result)).end();
         }else{
             res.status(400).json(err).end();
         }

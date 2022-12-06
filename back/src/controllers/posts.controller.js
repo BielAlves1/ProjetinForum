@@ -5,7 +5,7 @@ const Post = require('../models/Post.model');
 const listarPosts = (req, res) => {
     con.query(Post.toReadAll(), (err, result) => {
         if (err == null) {
-            res.status(200).json(result).end();
+            res.status(200).json(Post.toAscii(result)).end();
         }else{
             res.status(400).json(err).end();
         }

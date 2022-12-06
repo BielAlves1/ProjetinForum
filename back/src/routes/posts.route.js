@@ -3,10 +3,10 @@ const router = express.Router();
 
 const Post = require("../controllers/posts.controller");
 
-router.get("/usuarios/read", Post.listarPosts);
-router.get("/usuarios/read/:data", Post.listarPosts);
-router.post("/usuarios/create", Post.cadastrarPost);
-router.put("/usuarios/update", Post.alterarPost);
-router.delete("/usuarios/delete/:id_pub", Post.excluirPost);
+router.get("/posts/read", Post.listarPosts);
+router.get("/posts/read/:data", Post.listarPosts);
+router.post("/posts/create", Post.cadastrarPost);
+router.put("/posts/update", Post.alterarPost);
+router.delete("/posts/delete/:id_pub", Post.excluirPost);
 
 module.exports = router;

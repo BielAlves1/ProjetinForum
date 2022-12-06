@@ -19,7 +19,7 @@ const toReadData = (model) => {
 }
 
 const toUpdate = (model) => {
-    return `UPDATE post SET 
+    return `UPDATE posts SET 
     pergunta = '${model.pergunta}'
     WHERE id_pub = '${model.id_pub}'`;
 }

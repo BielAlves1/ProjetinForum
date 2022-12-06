@@ -1,4 +1,4 @@
-id_resp;id_comentario;id_user;respostas;likes ;dislikes
-1;1;2;Vc e muito ignorante;9999;1
-2;2;3;Vc tem um ponto;78;26
-3;3;1;(T_T);1;9999
+id_resp;id_user;id_comentario;respostas;data;likes;dislikes
+1;2;1;Vc e muito ignorante;2022/11/25;9999;1
+2;3;2;Vc tem um ponto;2022/11/25;78;26
+3;1;3;(T_T);2022/11/25;1;9999

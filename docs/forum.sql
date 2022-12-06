@@ -51,9 +51,10 @@ create table comentarios(
 
 create table respostas(
     id_resp int primary key auto_increment,
-    id_comentario int not null,
     id_user int not null,
+    id_comentario int not null,
     resposta varchar(500) not null,
+    data DATETIME not null,
     likes integer,
     dislikes integer,
     foreign key (id_user) references usuarios(id_user),
@@ -78,7 +79,7 @@ describe comentarios;
 describe respostas;
 describe favoritos;
 
-LOAD DATA INFILE 'C:/Users/Heitor/Desktop/ProjetinForum/docs/data/usuarios.CSV'
+LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/usuarios.CSV'
 INTO TABLE usuarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
