@@ -6,7 +6,12 @@ const toReadAll = () => {
     return 'SELECT * FROM sub_categorias';
 }
 
+const toDelete = (model) => {
+    return `DELETE FROM categorias WHERE id_subcat = '${model.id_categoria}'`;
+}
+
 module.exports = {
     toCreate,
-    toReadAll
+    toReadAll,
+    toDelete
 }

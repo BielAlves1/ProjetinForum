@@ -22,7 +22,20 @@ const cadastrarCategoria = (req, res) => {
     })
 }
 
+const excluirCategoria = (req, res) => {
+    con.query(Categoria.toDelete(req.params), (err, result) => {
+        if (err == null)
+            if (result.affectedRows > 0)
+                res.status(204).json(req.params).end();
+            else
+                res.status(404).end();
+        else
+            res.status(400).json(err).end();
+    })
+}
+
 module.exports = {
     listarCategorias,
     cadastrarCategoria,
+    excluirCategoria
 }

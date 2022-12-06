@@ -22,7 +22,20 @@ const cadastrarSubCategoria = (req, res) => {
     })
 }
 
+const excluirSubCategoria = (req, res) => {
+    con.query(SubCategoria.toDelete(req.params), (err, result) => {
+        if (err == null)
+            if (result.affectedRows > 0)
+                res.status(204).json(req.params).end();
+            else
+                res.status(404).end();
+        else
+            res.status(400).json(err).end();
+    })
+}
+
 module.exports = {
     listarSubCategorias,
-    cadastrarSubCategoria,
+    cadastrarSubCategoria, 
+    excluirSubCategoria
 }
