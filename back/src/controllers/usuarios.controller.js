@@ -1,5 +1,7 @@
 const con = require('../forumDAO.js');
 const Usuario = require('../models/Usuario.model');
+const multer = require('multer');
+const upload = multer().single('foto')
 
 
 const listarUsuarios = (req, res) => {
@@ -37,6 +39,7 @@ const login = (req, res) => {
 }
 
 const cadastrarUsuario = async (req, res) => {
+    upload(req, res, (err) => {
     con.query(Usuario.toCreate(req.body, req.file), (err, result) => {
         if (err == null) {
             res.status(201).end(result);
@@ -44,6 +47,7 @@ const cadastrarUsuario = async (req, res) => {
             res.status(400).json(err).end();
         }
     });
+})
 }
 
 const alterarUsuario = (req, res) => {

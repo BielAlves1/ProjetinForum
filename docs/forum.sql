@@ -2,12 +2,25 @@ drop database if exists forum;
 create database forum charset=UTF8 collate utf8_general_ci;
 use forum;
 
+create table cargos(
+    id_cargo int primary key auto_increment not null,
+    tipo varchar(10) not null
+);
+
 create table usuarios(
-    id_user int primary key auto_increment,
+    id_user int primary key auto_increment not null,
+    id_cargo int not null,
     email varchar(60) unique not null,
     senha varchar(30) not null,
-    nome_user varchar(20) unique not null,
+    nome_user varchar(20) not null,
+    foreign key(id_cargo) references cargos(id_cargo)
+);
+
+create table profiles(
+    id_user int not null
+    bio varchar(200),
     avatar mediumblob
+    foreign key(id_user) references usuarios(id_user)
 );
 
 create table categorias(
@@ -35,6 +48,12 @@ create table posts(
     img mediumblob,
     foreign key (id_user) references usuarios(id_user),
     foreign key (id_subcat) references sub_categorias(id_subcat)
+);
+
+create table img_posts(
+    id_pub int,
+    img mediumblob,
+    foreign key (id_pub) references posts(id_pub)
 );
 
 create table comentarios(
@@ -71,73 +90,31 @@ create table favoritos (
 
 show tables;
 
+describe cargos;
 describe usuarios;
+describe profiles;
 describe categorias;
 describe sub_categoria;
 describe posts;
+describe img_posts;
 describe comentarios;
 describe respostas;
 describe favoritos;
 
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/usuarios.CSV'
-INTO TABLE usuarios
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
+insert into cargos values
+(default, 'ADMIN'),
+(default, 'USER');
 
-select * from usuarios;
+insert into usuarios values
+(1, 1, 'bebel123@gmail.com', '1234', 'Bielzin'),
+(2, 2, 'guigm@gmail.com', 'senhasenha', 'Bolota'),
+(3, 2, 'juju_bla@gmail.com', '4321', 'JuVamp');
 
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/categorias.CSV'
-INTO TABLE categorias
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
+insert into profiles values
+(2, 'Músico, Desenvolvedor e Incel nas horas vagas', 'https://avatars.githubusercontent.com/u/64180881?v=4'),
+(3, 'Web-Designer Desenvolvedora', null );
 
-select * from categorias;
-
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/sub_categorias.CSV'
-INTO TABLE sub_categorias
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
-
-select * from sub_categorias;
-
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/posts.CSV'
-INTO TABLE posts
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
-
-select * from posts;
-
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/comentarios.CSV'
-INTO TABLE comentarios
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
-
-select * from comentarios;
-
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/respostas.CSV'
-INTO TABLE respostas
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
-
-select * from respostas;
-
-LOAD DATA INFILE 'D:/Gabriel Alves/ProjetinForum/docs/data/favoritos.CSV'
-INTO TABLE favoritos
-FIELDS TERMINATED BY ';'
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
-
-select * from favoritos;
+insert into categorias
+(1, 'Esporte', 'Discutimos sobre qualquer esporte'),
+(2, 'Games', 'Jogos no geral'),
+(3, 'Música', 'Músicas no Geral');

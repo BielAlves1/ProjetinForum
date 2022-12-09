@@ -1,6 +1,7 @@
 const toCreate = (dados, arquivo) =>{
-    dados.avatar =  arquivo.buffer.toString('base64');
-    return `INSERT INTO usuarios VALUES (default,'${dados.email}','${dados.senha}', '${dados.nome_user}', '${dados.avatar}')`;
+    // dados.avatar =  arquivo.buffer.toString('base64');
+    console.log (arquivo)
+    return `INSERT INTO usuarios VALUES (default,'${dados.email}','${dados.senha}', '${dados.nome_user}', null)`;
 }
 
 const toAscii = (dados)=>{
