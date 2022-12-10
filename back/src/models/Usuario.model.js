@@ -1,7 +1,26 @@
-const toCreate = (dados, arquivo) =>{
-    // dados.avatar =  arquivo.buffer.toString('base64');
-    console.log (arquivo)
-    return `INSERT INTO usuarios VALUES (default,'${dados.email}','${dados.senha}', '${dados.nome_user}', null)`;
+const toReadAll = () => {
+    return 'SELECT * FROM vw_perfilUser';
+}
+
+const toRead = () => {
+    return 'SELECT * FROM usuarios';
+}
+
+const toReadUserName = (model) => {
+    return `SELECT * FROM vw_perfilUser WHERE nome_user like '%${model.nome_user}%'`;
+}
+
+const toLogin = (model) => {
+    return `SELECT * FROM usuarios WHERE email = '${model.email}'`;
+}
+
+const toCreate = (model) => {
+    return `INSERT INTO usuarios value(default, '${model.id_role}', '${model.email}', '${model.senha}', '${model.nome_user}')`;
+}
+
+const toCreatePerfil = (dados, arquivo) =>{
+    dados.avatar =  arquivo.buffer.toString('base64');
+    return `INSERT INTO profiles VALUE('${dados.id_user}','${dados.bio}', '${dados.avatar}')`;
 }
 
 const toAscii = (dados)=>{
@@ -11,22 +30,15 @@ const toAscii = (dados)=>{
     return dados;
 }
 
-const toReadAll = () => {
-    return 'SELECT * FROM usuarios';
-}
-
-const toReadUserName = (model) => {
-    return `SELECT * FROM usuarios WHERE nome_user like '%${model.nome_user}%'`;
-}
-
-const toLogin = (model) => {
-    return `SELECT * FROM usuarios WHERE email = '${model.email}'`;
-}
-
-const toUpdate = (model) => {
+const toUpdateUsername = (model) => {
     return `UPDATE usuarios SET 
-    senha = '${model.senha}', 
-    nome_user = '${model.nome_user}' 
+    nome_user = '${model.nome_user}'
+    WHERE id_user = '${model.id_user}'`;
+}
+
+const toUpdatePassword = (model) => {
+    return `UPDATE usuarios SET 
+    senha = '${model.senha}'
     WHERE id_user = '${model.id_user}'`;
 }
 
@@ -35,11 +47,14 @@ const toDelete = (model) => {
 }
 
 module.exports = {
-    toCreate,
-    toAscii,
     toReadAll,
+    toRead,
     toReadUserName,
     toLogin,
-    toUpdate,
+    toCreate,
+    toCreatePerfil,
+    toAscii,
+    toUpdateUsername,
+    toUpdatePassword,
     toDelete
 }
