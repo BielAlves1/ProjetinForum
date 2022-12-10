@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/login/login.css">
+    <title>login</title>
+</head>
+
+<body>
+    <main>
+        <div class="arrumando">
+            <div class="imgdiv">
+                <img src="../../assets/imglogin.png" alt="" class="img">
+            </div>
+            <div class="slogandiv">
+                <p class="slogan">Divida conhecimento para que só haja crescimento</p>
+            </div>
+        </div>
+        <div id="container">
+            <div id="content">
+                <input type="text" placeholder="Email" class="email">
+                <input type="password" placeholder="Senha" class="senha">
+                <button class="btnLogin" onclick="login()">Login</button>
+                <a href="../../pages/cadastro/cadastrar.html" class="criar">Criar Conta</a>
+                <a href="" class="esqueci">Esqueci minha senha</a>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div id="novo">
+                <div class="modalForm"> 
+                    <input type="text" id="email" placeholder="Digite seu Email..."/>
+                    <input type="password" id="senha" placeholder="Digite a nova senha..." disabled/>
+                </div>
+                <div class="modalFooter">
+                    <button onclick="modal.setAttribute('style','display:none')" class="btnEM">Cancelar</button>
+                    <button onclick="cadastrar()" class="btnCM">Alterar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="../../scripts/login/login.js"></script>
+
+</html>
