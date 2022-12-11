@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/home/home.css">
+    <title>Blueddit</title>
+</head>
+
+<body> 
+    <header>
+        <div class="header">
+            <div class="divLogo">
+                <img src="../../assets/imglogin.png" alt="" class="logo">
+                <img src="../../assets/blueddit.png" alt="" class="logo" style="margin-bottom: 30px;">
+            </div>
+            <div class="divPesquisa">
+                <input type="text" placeholder="Pesquisar..." class="pesquisa">
+            </div>
+            <div class="divUser">
+                <img src="../../assets/imglogin.png" alt="" class="fotoUser">
+                <p class="nomeUser">Nome</p>
+            </div class="divPesquisa">  
+            <img src="../../assets/mais.png" alt="" class="imgmenu" onclick="abrirmenu()" style="cursor: pointer;"> 
+        </div>
+    </header>
+    <main class="main">
+        <button onclick="criarPost()" style="cursor: pointer;">Criar Post</button>
+        <div class="criarpost modal">
+            <div class="fundoModal">
+                <div class="dados">
+                    <div class="headermodal">
+                        <img src="../../assets/imglogin.png" alt="" id="imgUser">
+                        <label id="nome">Nome</label>
+                        <img onclick="modal.classList.add('modal')" src="../../assets/fechar.png" alt="" style="width: 32px; height: 32px; cursor: pointer;"/>
+                    </div>
+                    <div class="bodymodal"> 
+                        <textarea name="post" id="post" cols="119" rows="15" style="resize: none;" placeholder="Digite Aqui..." maxlength="5000"></textarea>
+                    </div>
+                    <div class="btn">
+                        <input type="submit" value="Enviar" />
+                        <input type="reset" value="Limpar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="menu modal1">
+        <span><a href="../config/config.html">Configurações</a></span>
+    </div> 
+</body>
+<script src="../../scripts/home/home.js"></script>
+
+</html>
