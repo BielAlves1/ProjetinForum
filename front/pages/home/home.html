@@ -26,35 +26,54 @@
             </div class="divPesquisa">
             <img src="../../assets/mais.png" alt="" class="imgmenu" onclick="abrirmenu()" style="cursor: pointer;">
         </div>
-    </header>
-    <div class="menu modal1">
-        <img onclick="modal1.classList.add('modal1')" src="../../assets/fechar.png" alt=""
-            style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
-        <span><a href="../config/config.html">Configurações</a></span>
-        <hr>
-        <span><a href="../config/config.html">Configurações</a></span>
-        <hr>
-        <span><a href="../config/config.html">Configurações</a></span>
-        <hr>
-        <div class="flipswitch">
-            <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
-            <label class="flipswitch-label" for="fs">
-                <div class="flipswitch-inner"></div>
-                <div class="flipswitch-switch"></div>
-            </label>
+        <div class="menu modal1">
+            <img onclick="modal1.classList.add('modal1')" src="../../assets/fechar.png" alt=""
+                style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
+            <span><a href="../config/config.html">Configurações</a></span>
+            <hr>
+            <span><a href="../config/config.html">Configurações</a></span>
+            <hr>
+            <span><a href="../config/config.html">Configurações</a></span>
+            <hr>
+            <div class="flipswitch">
+                <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
+                <label class="flipswitch-label" for="fs">
+                    <div class="flipswitch-inner"></div>
+                    <div class="flipswitch-switch"></div>
+                </label>
+            </div>
+            <span>sair</span>
         </div>
-        <span>sair</span>
-    </div>
+    </header>
     <main class="main">
         <div class="divcriar" style="border: 1px solid black">
             <img src="../../assets/imglogin.png" alt="" style="width: 100px;">
-            <button type="text" onclick="criarPost()" style="cursor: pointer;" class="inputzin">Criar Post</button>
+            <input type="text" onclick="criarPost()" style="cursor: pointer;" class="inputzin" placeholder="Criar Post"
+                style=>
+        </div>
+        
+        <div class="post" style="background-color: white;">
+            <div class="headerpost">
+                <img src="../../assets/imglogin.png" alt="" id="imgUser">
+                <label id="nome">Nome</label>
+                <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()" style="cursor: pointer; width: 20px; height: 20px;">
+            </div>
+            <div class="bodypost">
+                <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
+                    maxlength="5000" readonly></textarea>
+            </div>
+            <div class="footerpost">
+                <button id="comentario">Comentar</button>
+                <button id="like">Like</button>
+                <button id="dislike">Dislike</button>
+            </div>
         </div>
         <div class="criarpost modal">
             <div class="fundoModal">
                 <div class="dados">
-                    <div style="display: flex; justify-content: space-between;">
-                        <h4 style="color: white; text-transform: uppercase;">Faça seu Post</h4>
+                    <div style="display: flex; justify-content: space-between; height: 15%;">
+                        <h4 style="color: white; text-transform: uppercase; transform: translateY(40%);">Faça seu Post
+                        </h4>
                         <img onclick="modal.classList.add('modal')" src="../../assets/fechar.png" alt=""
                             style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
                     </div>
@@ -64,7 +83,8 @@
                         <label id="nome">Nome</label>
                     </div>
                     <div class="bodymodal">
-                        <textarea name="post" id="post" cols="119" rows="15" style="resize: none;" placeholder="Digite Aqui..." maxlength="5000"></textarea>
+                        <textarea name="post" id="post" cols="119" rows="15" style="resize: none;"
+                            placeholder="Digite Aqui..." maxlength="5000"></textarea>
                     </div>
                     <div class="btn">
                         <input type="submit" value="Postar" />
@@ -73,9 +93,6 @@
             </div>
         </div>
     </main>
-    <div class="menu modal1">
-        <span><a href="../config/config.html">Configurações</a></span>
-    </div>
 </body>
 <script src="../../scripts/home/home.js"></script>
 
