@@ -7,7 +7,7 @@ const toReadAll = () => {
 }
 
 const toDelete = (model) => {
-    return `DELETE FROM categorias WHERE id_categoria = '${model.id_subcat}'`;
+    return `DELETE FROM categorias WHERE id_categoria = '${model.id_categoria}'`;
 }
 
 module.exports = {

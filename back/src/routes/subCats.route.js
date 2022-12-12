@@ -4,7 +4,7 @@ const router = express.Router();
 const SubCategoria = require("../controllers/subCats.controller");
 
 router.get("/subCategorias/read", SubCategoria.listarSubCategorias);
-router.post("/subCategoria/create", SubCategoria.cadastrarSubCategoria);
-router.delete("/subCategoria/delete/:id_subcat", SubCategoria.excluirSubCategoria);
+router.post("/subCategorias/create", SubCategoria.cadastrarSubCategoria);
+router.delete("/subCategorias/delete/:id_subcat", SubCategoria.excluirSubCategoria);
 
 module.exports = router;

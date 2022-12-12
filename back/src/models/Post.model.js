@@ -1,6 +1,26 @@
-const toCreate = (dados, arquivo) =>{
+const toCreate = (model) =>{
+    return `INSERT INTO posts VALUES (default, '${model.id_user}', '${model.id_subcat}', curdate(), '${model.conteudo}')`;
+}
+
+const toReadAll = () => {
+    return 'SELECT * FROM posts';
+}
+
+const toReadView = () => {
+    return 'SELECT * FROM vw_geral';
+}
+
+const toReadCat = (model) => {
+    return `SELECT * FROM vw_geral WHERE nome_categoria like '%${model.nome_categoria}%'`;
+}
+
+const toReadData = (model) => {
+    return `SELECT * FROM vw_geral WHERE data like '%${model.data}%'`;
+}
+
+const toCreateImg = (dados, arquivo) =>{
     dados.img =  arquivo.buffer.toString('base64');
-    return `INSERT INTO posts VALUES (default,'${dados.id_user}', '${dados.id_subcat}', curdate(), '${dados.pergunta}',  '${dados.img}')`;
+    return `INSERT INTO img_posts VALUE('${dados.id_pub}', '${dados.img}')`;
 }
 
 const toAscii = (dados)=>{
@@ -10,17 +30,9 @@ const toAscii = (dados)=>{
     return dados;
 }
 
-const toReadAll = () => {
-    return 'SELECT * FROM posts';
-}
-
-const toReadData = (model) => {
-    return `SELECT * FROM posts WHERE data like '%${model.data}%'`;
-}
-
 const toUpdate = (model) => {
     return `UPDATE posts SET 
-    pergunta = '${model.pergunta}'
+    conteudo = '${model.conteudo}'
     WHERE id_pub = '${model.id_pub}'`;
 }
 
@@ -29,10 +41,13 @@ const toDelete = (model) => {
 }
 
 module.exports = {
-    toCreate,
-    toAscii,
     toReadAll,
+    toReadView,
+    toReadCat,
     toReadData,
+    toCreate,
+    toCreateImg,
+    toAscii,
     toUpdate,
     toDelete
 }

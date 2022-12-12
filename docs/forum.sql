@@ -52,7 +52,7 @@ create table posts(
 create table img_posts(
     id_pub int not null,
     img mediumblob,
-    foreign key (id_pub) references posts(id_pub)
+    foreign key (id_pub) references posts(id_pub) on delete cascade
 );
 
 create table comentarios(
@@ -64,7 +64,7 @@ create table comentarios(
     likes integer,
     dislikes integer,
     foreign key (id_user) references usuarios(id_user),
-    foreign key (id_pub) references posts(id_pub)
+    foreign key (id_pub) references posts(id_pub) on delete cascade
 );
 
 create table respostas(
@@ -76,7 +76,7 @@ create table respostas(
     likes integer,
     dislikes integer,
     foreign key (id_user) references usuarios(id_user),
-    foreign key (id_comentario) references comentarios(id_comentario)
+    foreign key (id_comentario) references comentarios(id_comentario) on delete cascade
 );
 
 create table favoritos (
@@ -173,14 +173,22 @@ on u.id_user = p.id_user;
 
 select * from vw_perfilUser;
 
-create view vw_usp as
-select u.id_user, u.id_role, u.email, u.senha, u.nome_user, c.id_categoria, c.nome_categoria, sc.id_subcat, sc.nome_subcat, p.id_pub, p.data, p.conteudo
+create view vw_geral as
+select u.id_user, u.email, u.nome_user, pr.avatar, c.id_categoria, c.nome_categoria, sc.id_subcat, sc.nome_subcat, p.id_pub, p.id_user as id_userPub, p.data, p.conteudo, p.likes, p.dislikes, 
+com.id_comentario, com.id_user as id_userComent , com.comentario, com.data as data_coment, com.likes as likes_coment, com.dislikes as dislikes_coment,
+res.id_resp, res.id_user as id_userResp, res.resposta, res.data as data_resp, res.likes as likes_resp, res.dislikes as dislikes_resp
 from usuarios u
-inner join posts p
+inner join profiles pr
+on u.id_user = pr.id_user
+join posts p
 on u.id_user = p.id_user
 join sub_categorias sc
 on p.id_subcat = sc.id_subcat
 join categorias c
-on sc.id_categoria = c.id_categoria;
+on sc.id_categoria = c.id_categoria
+join comentarios com
+on p.id_pub = com.id_pub
+join respostas res
+on com.id_comentario = res.id_comentario;
 
-select * from vw_usp;
+select * from vw_geral;

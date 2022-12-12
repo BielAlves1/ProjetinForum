@@ -12,6 +12,27 @@ const listarPosts = (req, res) => {
     })
 }
 
+const listarView = (req, res) => {
+    con.query(Post.toReadView(), (err, result) => {
+        if (err == null) {
+            res.status(200).json(Post.toAscii(result)).end();
+        }else{
+            res.status(400).json(err).end();
+        }
+    })
+}
+
+const listarPostCat= (req, res) => {
+    con.query(Post.toReadCat(req.params), (err, result) => {
+        if (err == null) {
+            if (result.length > 0)
+                res.json(Post.toAscii(result)).end();
+            else
+                res.status(404).end();
+        }
+    });
+}
+
 const listarPostData = (req, res) => {
     con.query(Post.toReadData(req.params), (err, result) => {
         if (err == null) {
@@ -23,14 +44,26 @@ const listarPostData = (req, res) => {
     });
 }
 
-const cadastrarPost = async (req, res) => {
-    con.query(Post.toCreate(req.body, req.file), (err, result) => {
-        if (err == null) {
-            res.status(201).end(result);
-        } else {
+const cadastrarPost = (req, res) => {
+    con.query(Post.toCreate(req.body), (err, result) => {
+        if (err == null){
+            res.status(201).json().end();
+        }else{
             res.status(400).json(err).end();
         }
-    });
+    })
+}
+
+const cadastrarImgPost = (req, res) => {
+    upload(req, res, (err) => {
+        con.query(Usuario.toCreateImg(req.body, req.file), (err, result) => {
+            if (err == null) {
+                res.status(201).end(Usuario.toAscii(result));
+            } else {
+                res.status(400).json(err).end();
+            }
+        });
+    })
 }
 
 const alterarPost = (req, res) => {
@@ -59,8 +92,11 @@ const excluirPost = (req, res) => {
 
 module.exports = {
     listarPosts,
+    listarView,
+    listarPostCat,
     listarPostData,
     cadastrarPost,
+    cadastrarImgPost,
     alterarPost,
     excluirPost
 }

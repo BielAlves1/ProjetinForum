@@ -3,11 +3,11 @@ const jwt = require('jsonwebtoken');
 const Usuario = require('../models/Usuario.model');
 require('dotenv').config();
 
-const listarView= (req, res) => {
+const listarView = (req, res) => {
     con.query(Usuario.toReadAll(), (err, result) => {
         if (err == null) {
             res.status(200).json(result).end();
-        }else{
+        } else {
             res.status(400).json(err).end();
         }
     })
@@ -17,7 +17,7 @@ const listarUsuarios = (req, res) => {
     con.query(Usuario.toRead(), (err, result) => {
         if (err == null) {
             res.status(200).json(Usuario.toAscii(result)).end();
-        }else{
+        } else {
             res.status(400).json(err).end();
         }
     })
@@ -36,27 +36,25 @@ const listarUsuario = (req, res) => {
 
 const login = (req, res) => {
     const user = req.body;
-
     con.query(Usuario.toLogin(user), (err, result) => {
-        if(err == null){
-            if(user.email == result[0].email && user.senha == result[0].senha){
+        if (err == null) {
+            if (user.email == result[0].email && user.senha == result[0].senha) {
                 let retorno = {
                     "id_user": result[0].id_user,
                     "id_role": result[0].id_role,
                     "email": result[0].email,
                     "nome_user": result[0].nome_user
                 }
-
                 jwt.sign(retorno, process.env.KEY, (err, token) => {
-                    if(err == null) {
+                    if (err == null) {
                         retorno["token"] = token;
                         res.status(200).json(retorno).end();
-                    }else {
+                    } else {
                         res.status(404).json(err).end();
                     }
-                });   
+                });
             }
-        }else{
+        } else {
             res.status(400).json(err).end()
         }
     })
@@ -64,9 +62,9 @@ const login = (req, res) => {
 
 const cadastrarUsuario = (req, res) => {
     con.query(Usuario.toCreate(req.body), (err, result) => {
-        if (err == null){
-            res.status(201).json(result).end();
-        }else{
+        if (err == null) {
+            res.status(201).json().end();
+        } else {
             res.status(400).json(err).end();
         }
     })
@@ -74,14 +72,14 @@ const cadastrarUsuario = (req, res) => {
 
 const cadastrarPerfilUsuario = (req, res) => {
     upload(req, res, (err) => {
-    con.query(Usuario.toCreate(req.body, req.file), (err, result) => {
-        if (err == null) {
-            res.status(201).end(Usuario.toAscii(result));
-        } else {
-            res.status(400).json(err).end();
-        }
-    });
-})
+        con.query(Usuario.toCreatePerfil(req.body, req.file), (err, result) => {
+            if (err == null) {
+                res.status(201).end(Usuario.toAscii(result));
+            } else {
+                res.status(400).json(err).end();
+            }
+        });
+    })
 }
 
 const alterarUsername = (req, res) => {

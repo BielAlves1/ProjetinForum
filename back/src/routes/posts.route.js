@@ -3,9 +3,12 @@ const router = express.Router();
 
 const Post = require("../controllers/posts.controller");
 
-router.get("/posts/read", Post.listarPosts);
-router.get("/posts/read/:data", Post.listarPosts);
+router.get("/posts/readAll", Post.listarPosts);
+router.get("/posts/readView", Post.listarView);
+router.get("/posts/read/:nome_categoria", Post.listarPostCat);
+router.get("/posts/readData/:data", Post.listarPostData);
 router.post("/posts/create", Post.cadastrarPost);
+router.post("/posts/createImg", Post.cadastrarImgPost);
 router.put("/posts/update", Post.alterarPost);
 router.delete("/posts/delete/:id_pub", Post.excluirPost);
 
