@@ -6,11 +6,11 @@
 }
 
 body {
-    background-color: #328ECB;
+    background-color: #004c82;
 }
 
 main {
-    background-color: #328ECB;
+    background-color: #004c82;
     width: 100%;
     height: auto;
     display: flex;
@@ -77,16 +77,17 @@ main {
     width: 60%;
     height: 10%;
     border-radius: 15px;
-    background-color: #004C82;
+    background-color: #328ECB;
     color: #ffffff;
-    margin-bottom: 23%;
+    margin-top: 10%;
+    margin-bottom: 20%;
     font-size: 20px;
     cursor: pointer;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .btnLogin:hover {
-    background-color: #328ECB;
+    background-color: #004c82;
     color: #ffffff;
 }
 

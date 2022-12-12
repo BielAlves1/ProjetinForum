@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #00416de3;
+    background-color: #d0d0d0e3;
 }
 
 .header {
@@ -25,7 +25,7 @@ body {
 
 .divPesquisa {
     border: none;
-    margin-left: 3%;
+    margin-left: 8%;
 }
 
 .pesquisa {
@@ -69,9 +69,10 @@ body {
 }
 
 .main {
-    display: block  ;
+    display:flex;
+    flex-direction: column;
     position: fixed;
-    background-color: white;
+    background-color: #9999998a;
     width: 70%;
     height: 100vh;
     margin-left: 15%;
@@ -96,6 +97,8 @@ body {
 }
 
 .modal {
+    position: absolute;
+    z-index: 5;
     animation-name: criandoPost;
     animation-duration: 0.6s;
     display: none;
@@ -103,6 +106,7 @@ body {
 
 .modal1 {
     display: none;
+    visibility: hidden;
 }
 
 .menu{
@@ -111,7 +115,9 @@ body {
     flex-direction: column;
     width: 250px;
     height: 350px;
-    position: absolute;
+    position: fixed;
+    top: 25px;
+    left: 86.5%;
     border: 2px solid black;
     border-radius: 5px;
     background-color: white;
@@ -133,7 +139,7 @@ body {
 }
 
 .fundoModal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -142,25 +148,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.dados {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    background-color: #328ecbf3;
-    width: 65vw;
-    height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
-
-    animation-name: criandoPost;
-    animation-duration: 0.6s;
-}
+}   
 
 .fecharpost {
     background-color: #328ECB;
@@ -171,7 +159,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
-
+    
     animation-name: fechandocriandoPost;
     animation-duration: 0.6s;
 }
@@ -185,7 +173,7 @@ body {
     0% {
         transform: translateY(100vh);
     }
-
+    
     100% {
         transform: translateY(calc(-100vh -95vh));
     }
@@ -197,27 +185,50 @@ body {
     }
 }
 
+.dados {
+    overflow: hidden;
+    background-color: #328ecbf3;
+    width: 40vw;
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
+
+    animation-name: criandoPost;
+    animation-duration: 0.6s;
+}
+
+.dados input {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 100px;
+}
+
 .dados img {
-    width: 6vw;
+    width: 10vw;
     height: 10vh;
     border-radius: 10px;
     transform: translateY(-18px);
 }
 
 .dados .headermodal {
+    transform: translateY(-50px);
     display: flex;
-    align-self: left;
-    justify-content: space-between;
-    transform: translateY(-70px);
 }
 
 .dados .headermodal label {
-    margin-right: 85%;
-    transform: translateY(30px);
+    transform: translateY(10px);
 }
 
 .dados .headermodal img {
-    transform: translateY(15px);
+    width: 7vw;
+    height: 10vh;
 }
 
 .bodymodal {
@@ -232,20 +243,9 @@ body {
     align-items: center;
 }
 
-.dados input {
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 100px;
-}
-
 .dados .btn {
     height: 10%;
-    transform: translatey(-150px);
-    transform: translatex(700px);
+    transform: translatex(640px);
 }
 
 .dados .btn>input:hover {
@@ -257,28 +257,33 @@ body {
     display: flex;
     align-items: center;
     margin-top: 5%;
-    margin-left: 10%;
-    width: 80%;
-    height: 10%;
+    margin-left: 17%;
+    width: 65%;
+    height: 7%;
     border: 1px solid black;
     border-radius: 10px;
-    background-color: #0D5D94;
+    background-color: #ffffff;
 }
 
 .inputzin{
     margin-top: 0%;
-    margin-left: 12%;
+    margin-left: 15%;
     padding: 20px;
     font-size: 20px;
-    width: 72%;
+    width: 70%;
     height: 80%;
     border-radius: 12px;
-    color: #328ECB;
-    text-align: center;
+    color: #ffffff;
+    background-color: #196ca7d4;
+}
+
+.inputzin:hover{
+    border: 3px solid black;
 }
 
 .inputzin::placeholder {
     font-size: 20px;
+    color: #FFFFFF;
 }
 
 .flipswitch {
@@ -335,7 +340,7 @@ body {
     top: 0;
     bottom: 0;
     right: 16px;
-    transition: all 0.3s ease-in 0s;
+    transition: 0.3s ease-in 0s;
   }
   .flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
     margin-left: 0;
@@ -343,4 +348,66 @@ body {
   .flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
     right: 0;
   }
+
+.post{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    height: 45%;
+    position: relative;
+    border-radius: 10px;
+    transform: translate(26%, 15%);
+    border: 1px solid black;
+}
+
+.post .headerpost {
+    display: flex;
+}
+
+.post .headerpost label {
+    transform: translateY(25%);
+}
+.imgmenucoment {
+        transform: translate(710px, 10px);
+}
+
+.post img{
+    width: 100px;
+}
+
+.post .footerpost {
+    display: flex;
+    width: 100%;
+    height: 4vh;
+    transform: translateY(83px);
+}
+
+#comentario{
+    margin: 0px;
+    width: 50%;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 0px 0px 0px 10px;
+    background-color: #cdcdcdb9;
+    cursor: pointer;
+}
+
+#like{
+    margin: 0px;
+    width: 25%;
+    height: 4vh;
+    border: 1px solid black;
+    background-color: #cdcdcdb9;
+    cursor: pointer;
+}
+
+#dislike{
+    margin: 0px;
+    width: 25%;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 0px 0px 10px 0px;
+    background-color: #cdcdcdb9;
+    cursor: pointer;
+}
   
