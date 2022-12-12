@@ -6,11 +6,11 @@
 }
 
 body {
-    background-color: #00426D;
+    background-color: #00416de3;
 }
 
 .header {
-    position: relative  ;
+    position: relative;
     width: 100%;
     height: 65px;
     background-color: #0D5D94;
@@ -34,6 +34,11 @@ body {
     border: none;
     width: 865px;
     height: 5vh;
+    border: 1px solid black;
+}
+
+.pesquisa:hover{
+    border: 2px solid black;
 }
 
 .divUser {
@@ -64,7 +69,8 @@ body {
 }
 
 .main {
-    position: relative;
+    display: block  ;
+    position: fixed;
     background-color: white;
     width: 70%;
     height: 100vh;
@@ -100,11 +106,30 @@ body {
 }
 
 .menu{
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
     width: 250px;
-    height: 600px;
+    height: 350px;
     position: absolute;
     border: 2px solid black;
+    border-radius: 5px;
     background-color: white;
+}
+
+.menu img{
+    background-color: #000000;
+    position: relative;
+    left: 88%;
+}
+
+.menu span{
+    margin-top: 20px;
+}
+
+.menu hr{
+    border-color: #000000; 
+    width: 100%;
 }
 
 .fundoModal {
@@ -120,7 +145,11 @@ body {
 }
 
 .dados {
-    background-color: #328ECB;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #328ecbf3;
     width: 65vw;
     height: 100vh;
     padding: 20px;
@@ -145,6 +174,11 @@ body {
 
     animation-name: fechandocriandoPost;
     animation-duration: 0.6s;
+}
+
+.makeapost{
+    width: 80%;
+    height: 10%;
 }
 
 @keyframes criandoPost {
@@ -178,7 +212,7 @@ body {
 }
 
 .dados .headermodal label {
-    margin-right: 75%;
+    margin-right: 85%;
     transform: translateY(30px);
 }
 
@@ -187,7 +221,7 @@ body {
 }
 
 .bodymodal {
-    transform: translateY(-160px);
+    transform: translateY(-100px);
 }
 
 .dados .comandos {
@@ -209,12 +243,104 @@ body {
 }
 
 .dados .btn {
-    width: 100%;
-    height: 5%;
-    display: flex;
-    justify-content: space-around;
+    height: 10%;
+    transform: translatey(-150px);
+    transform: translatex(700px);
 }
 
 .dados .btn>input:hover {
     background-color: #999999;
+    border: 1px solid black;
 }
+
+.divcriar{
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 80%;
+    height: 10%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #0D5D94;
+}
+
+.inputzin{
+    margin-top: 0%;
+    margin-left: 12%;
+    padding: 20px;
+    font-size: 20px;
+    width: 72%;
+    height: 80%;
+    border-radius: 12px;
+    color: #328ECB;
+    text-align: center;
+}
+
+.inputzin::placeholder {
+    font-size: 20px;
+}
+
+.flipswitch {
+    position: relative;
+    width: 30px;
+  }
+  .flipswitch input[type=checkbox] {
+    display: none;
+  }
+  .flipswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 10px;
+  }
+  .flipswitch-inner {
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+  }
+  .flipswitch-inner:before, .flipswitch-inner:after {
+    float: left;
+    width: 50%;
+    height: 12px;
+    padding: 0;
+    line-height: 12px;
+    font-size: 8px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  .flipswitch-inner:before {
+    content: "ON";
+    padding-left: 5px;
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  .flipswitch-inner:after {
+    content: "OFF";
+    padding-right: 0px;
+    background-color: #EBEBEB;
+    color: #000000;
+    text-align: right;
+  }
+  .flipswitch-switch {
+    width: 12px;
+    margin: 0px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px;
+    transition: all 0.3s ease-in 0s;
+  }
+  .flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+    margin-left: 0;
+  }
+  .flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+    right: 0;
+  }
+  

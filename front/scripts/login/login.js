@@ -12,7 +12,7 @@ function login() {
         .then(resp => resp.status)
         .then(resp => {
             if (resp == 200) {
-                window.location.href = "../../pages/home.html";
+                window.location.href = "../../pages/home/home.html";
             }
             else {
                 alert("Email ou Senha Incorretas")

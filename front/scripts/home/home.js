@@ -7,4 +7,5 @@ function criarPost() {
 
 function abrirmenu() {
     modal1.classList.remove("modal1");
+    console.log(modal1);
 }
