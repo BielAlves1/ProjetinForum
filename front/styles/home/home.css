@@ -1,0 +1,346 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    background-color: #00416de3;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 65px;
+    background-color: #0D5D94;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+}
+
+.divPesquisa {
+    border: none;
+    margin-left: 3%;
+}
+
+.pesquisa {
+    padding-left: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 865px;
+    height: 5vh;
+    border: 1px solid black;
+}
+
+.pesquisa:hover{
+    border: 2px solid black;
+}
+
+.divUser {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5%;
+    height: 9vh;
+    width: 100px;
+}
+
+.nomeUser {
+    color: white;
+}
+
+.fotoUser {
+    width: 50px;
+}
+
+.abrirMenu {
+    display: inline;
+    padding: 20px;
+    align-items: center;
+    width: 30px;
+    height: 50px;
+    margin-bottom: 35px;
+    border: none;
+}
+
+.main {
+    display: block  ;
+    position: fixed;
+    background-color: white;
+    width: 70%;
+    height: 100vh;
+    margin-left: 15%;
+}
+
+#divpost {
+    background-color: #999999;
+}
+
+#divuserpost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imgmenu {
+    width: 20px;
+}
+
+.postmenu {
+    width: 10px;
+}
+
+.modal {
+    animation-name: criandoPost;
+    animation-duration: 0.6s;
+    display: none;
+}
+
+.modal1 {
+    display: none;
+}
+
+.menu{
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    width: 250px;
+    height: 350px;
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.menu img{
+    background-color: #000000;
+    position: relative;
+    left: 88%;
+}
+
+.menu span{
+    margin-top: 20px;
+}
+
+.menu hr{
+    border-color: #000000; 
+    width: 100%;
+}
+
+.fundoModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(53, 52, 52, 0.616);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dados {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #328ecbf3;
+    width: 65vw;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
+
+    animation-name: criandoPost;
+    animation-duration: 0.6s;
+}
+
+.fecharpost {
+    background-color: #328ECB;
+    width: 65vw;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
+
+    animation-name: fechandocriandoPost;
+    animation-duration: 0.6s;
+}
+
+.makeapost{
+    width: 80%;
+    height: 10%;
+}
+
+@keyframes criandoPost {
+    0% {
+        transform: translateY(100vh);
+    }
+
+    100% {
+        transform: translateY(calc(-100vh -95vh));
+    }
+}
+
+@keyframes fechandocriandoPost {
+    100% {
+        transform: translateY(calc(100vh + 100vh));
+    }
+}
+
+.dados img {
+    width: 6vw;
+    height: 10vh;
+    border-radius: 10px;
+    transform: translateY(-18px);
+}
+
+.dados .headermodal {
+    display: flex;
+    align-self: left;
+    justify-content: space-between;
+    transform: translateY(-70px);
+}
+
+.dados .headermodal label {
+    margin-right: 85%;
+    transform: translateY(30px);
+}
+
+.dados .headermodal img {
+    transform: translateY(15px);
+}
+
+.bodymodal {
+    transform: translateY(-100px);
+}
+
+.dados .comandos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dados input {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 100px;
+}
+
+.dados .btn {
+    height: 10%;
+    transform: translatey(-150px);
+    transform: translatex(700px);
+}
+
+.dados .btn>input:hover {
+    background-color: #999999;
+    border: 1px solid black;
+}
+
+.divcriar{
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 10%;
+    width: 80%;
+    height: 10%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #0D5D94;
+}
+
+.inputzin{
+    margin-top: 0%;
+    margin-left: 12%;
+    padding: 20px;
+    font-size: 20px;
+    width: 72%;
+    height: 80%;
+    border-radius: 12px;
+    color: #328ECB;
+    text-align: center;
+}
+
+.inputzin::placeholder {
+    font-size: 20px;
+}
+
+.flipswitch {
+    position: relative;
+    width: 30px;
+  }
+  .flipswitch input[type=checkbox] {
+    display: none;
+  }
+  .flipswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 10px;
+  }
+  .flipswitch-inner {
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+  }
+  .flipswitch-inner:before, .flipswitch-inner:after {
+    float: left;
+    width: 50%;
+    height: 12px;
+    padding: 0;
+    line-height: 12px;
+    font-size: 8px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  .flipswitch-inner:before {
+    content: "ON";
+    padding-left: 5px;
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  .flipswitch-inner:after {
+    content: "OFF";
+    padding-right: 0px;
+    background-color: #EBEBEB;
+    color: #000000;
+    text-align: right;
+  }
+  .flipswitch-switch {
+    width: 12px;
+    margin: 0px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 16px;
+    transition: all 0.3s ease-in 0s;
+  }
+  .flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+    margin-left: 0;
+  }
+  .flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+    right: 0;
+  }
+  

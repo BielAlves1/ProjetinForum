@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/home/home.css">
+    <title>Blueddit</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/imglogin.png">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="divLogo">
+                <img src="../../assets/imglogin.png" alt="" class="logo">
+                <img src="../../assets/blueddit.png" alt="" class="logo" style="margin-bottom: 30px;">
+            </div>
+            <div class="divPesquisa">
+                <input type="text" placeholder="Pesquisar..." class="pesquisa">
+            </div>
+            <div class="divUser">
+                <img src="../../assets/imglogin.png" alt="" class="fotoUser">
+                <p class="nomeUser">Nome</p>
+            </div class="divPesquisa">
+            <img src="../../assets/mais.png" alt="" class="imgmenu" onclick="abrirmenu()" style="cursor: pointer;">
+        </div>
+    </header>
+    <div class="menu modal1">
+        <img onclick="modal1.classList.add('modal1')" src="../../assets/fechar.png" alt=""
+            style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
+        <span><a href="../config/config.html">Configurações</a></span>
+        <hr>
+        <span><a href="../config/config.html">Configurações</a></span>
+        <hr>
+        <span><a href="../config/config.html">Configurações</a></span>
+        <hr>
+        <div class="flipswitch">
+            <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
+            <label class="flipswitch-label" for="fs">
+                <div class="flipswitch-inner"></div>
+                <div class="flipswitch-switch"></div>
+            </label>
+        </div>
+        <span>sair</span>
+    </div>
+    <main class="main">
+        <div class="divcriar" style="border: 1px solid black">
+            <img src="../../assets/imglogin.png" alt="" style="width: 100px;">
+            <button type="text" onclick="criarPost()" style="cursor: pointer;" class="inputzin">Criar Post</button>
+        </div>
+        <div class="criarpost modal">
+            <div class="fundoModal">
+                <div class="dados">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white; text-transform: uppercase;">Faça seu Post</h4>
+                        <img onclick="modal.classList.add('modal')" src="../../assets/fechar.png" alt=""
+                            style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
+                    </div>
+                    <hr style="position: relative; bottom: 50px;">
+                    <div class="headermodal">
+                        <img src="../../assets/imglogin.png" alt="" id="imgUser">
+                        <label id="nome">Nome</label>
+                    </div>
+                    <div class="bodymodal">
+                        <textarea name="post" id="post" cols="119" rows="15" style="resize: none;" placeholder="Digite Aqui..." maxlength="5000"></textarea>
+                    </div>
+                    <div class="btn">
+                        <input type="submit" value="Postar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="menu modal1">
+        <span><a href="../config/config.html">Configurações</a></span>
+    </div>
+</body>
+<script src="../../scripts/home/home.js"></script>
+
+</html>
