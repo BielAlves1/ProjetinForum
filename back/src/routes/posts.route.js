@@ -8,7 +8,7 @@ router.get("/posts/readView", Post.listarView);
 router.get("/posts/read/:nome_categoria", Post.listarPostCat);
 router.get("/posts/readData/:data", Post.listarPostData);
 router.post("/posts/create", Post.cadastrarPost);
-router.post("/posts/createImg", Post.cadastrarImgPost);
+router.post("/posts/createImg", Post.cadastrarImgPost); //NÃO TESTAR, AINDA NÃO ESTÁ PRONTO.
 router.put("/posts/update", Post.alterarPost);
 router.delete("/posts/delete/:id_pub", Post.excluirPost);
 

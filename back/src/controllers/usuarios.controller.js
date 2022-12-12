@@ -16,7 +16,7 @@ const listarView = (req, res) => {
 const listarUsuarios = (req, res) => {
     con.query(Usuario.toRead(), (err, result) => {
         if (err == null) {
-            res.status(200).json(Usuario.toAscii(result)).end();
+            res.status(200).json(result).end();
         } else {
             res.status(400).json(err).end();
         }
