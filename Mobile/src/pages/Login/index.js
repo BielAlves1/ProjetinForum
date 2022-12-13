@@ -47,7 +47,6 @@ export default function Login({ navigation }) {
     );
 
     return (
-        <ScrollView>
             <View style={style.container}>
                 <Image style={style.imgLogin} source={{ uri: logo }} />
 
@@ -58,7 +57,6 @@ export default function Login({ navigation }) {
                     <Text style={style.text}>Login</Text>
                 </TouchableOpacity>
             </View>
-        </ScrollView>
     )
 }
 
@@ -85,7 +83,7 @@ const style = StyleSheet.create({
         elevation: 24,
     },
     inputzin: {
-        marginTop: '5%',
+        marginTop: '10%',
         height: '50px',
         width: '75%',
         backgroundColor: '#EFEFEF',
