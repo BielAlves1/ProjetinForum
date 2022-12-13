@@ -63,9 +63,38 @@
                     maxlength="5000" readonly></textarea>
             </div>
             <div class="footerpost">
-                <button id="comentario">Comentar</button>
+                <button id="comentario" onclick="comenta()">Comentar</button>
                 <button id="like">Like</button>
                 <button id="dislike">Dislike</button>
+            </div>
+            <div class="menupost modalpost">
+                <img onclick="modal1.classList.add('modal1')" src="../../assets/fechar.png" alt=""
+                    style="width: 32px; height: 32px; cursor: pointer; transform: translateY(-0%);" />
+                <span><a href="../config/config.html">Configurações</a></span>
+                <hr>
+                <span><a href="../config/config.html">Configurações</a></span>
+                <hr>
+                <span><a href="../config/config.html">Configurações</a></span>
+                <hr>
+                <div class="flipswitch">
+                    <input type="checkbox" name="flipswitch" class="flipswitch-cb" id="fs" checked>
+                    <label class="flipswitch-label" for="fs">
+                        <div class="flipswitch-inner"></div>
+                        <div class="flipswitch-switch"></div>
+                    </label>
+                </div>
+                <span>sair</span>
+            </div>
+        </div>
+        <div class="comenta modalcomenta">
+            <div class="headercomenta">
+                <textarea name="" id="" cols="112" rows="5" style="resize: none;" placeholder="Comente aqui..."></textarea>
+            </div>
+            <div class="bodycomenta">
+
+            </div>
+            <div class="footercomenta">
+
             </div>
         </div>
         <div class="criarpost modal">
