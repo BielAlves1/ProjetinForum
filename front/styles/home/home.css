@@ -5,8 +5,15 @@
     overflow: hidden;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     background-color: #d0d0d0e3;
+    scroll-margin-block-start: 10px;
+    scroll-margin-block-end: 800px;
+
 }
 
 .header {
@@ -32,12 +39,12 @@ body {
     padding-left: 20px;
     border-radius: 10px;
     border: none;
-    width: 865px;
+    width: 870px;
     height: 5vh;
     border: 1px solid black;
 }
 
-.pesquisa:hover{
+.pesquisa:hover {
     border: 2px solid black;
 }
 
@@ -69,7 +76,7 @@ body {
 }
 
 .main {
-    display:flex;
+    display: flex;
     flex-direction: column;
     position: fixed;
     background-color: #9999998a;
@@ -109,12 +116,12 @@ body {
     visibility: hidden;
 }
 
-.modalpost{
+.modalpost {
     display: none;
     visibility: hidden;
 }
 
-.comenta{
+.comenta {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -123,14 +130,14 @@ body {
     z-index: 5;
 }
 
-.comenta .headercomenta{
+.comenta .headercomenta {
     display: flex;
     border: 1px solid black;
     width: 100%;
     height: 30%;
 }
 
-.menupost{
+.menupost {
     display: flex;
     align-items: baseline;
     flex-direction: column;
@@ -144,22 +151,22 @@ body {
     background-color: white;
 }
 
-.menupost img{
+.menupost img {
     background-color: #000000;
     position: relative;
     left: 88%;
 }
 
-.menupost span{
+.menupost span {
     margin-top: 20px;
 }
 
-.menupost hr{
-    border-color: #000000; 
+.menupost hr {
+    border-color: #000000;
     width: 100%;
 }
 
-.menu{
+.menu {
     display: flex;
     align-items: baseline;
     flex-direction: column;
@@ -173,18 +180,18 @@ body {
     background-color: white;
 }
 
-.menu img{
+.menu img {
     background-color: #000000;
     position: relative;
     left: 88%;
 }
 
-.menu span{
+.menu span {
     margin-top: 20px;
 }
 
-.menu hr{
-    border-color: #000000; 
+.menu hr {
+    border-color: #000000;
     width: 100%;
 }
 
@@ -198,7 +205,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}   
+}
 
 .fecharpost {
     background-color: #328ECB;
@@ -209,12 +216,12 @@ body {
     flex-direction: column;
     justify-content: space-around;
     box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
-    
+
     animation-name: fechandocriandoPost;
     animation-duration: 0.6s;
 }
 
-.makeapost{
+.makeapost {
     width: 80%;
     height: 10%;
 }
@@ -223,7 +230,7 @@ body {
     0% {
         transform: translateY(100vh);
     }
-    
+
     100% {
         transform: translateY(calc(-20vh -20vh));
     }
@@ -303,7 +310,7 @@ body {
     border: 1px solid black;
 }
 
-.divcriar{
+.divcriar {
     display: flex;
     align-items: center;
     margin-top: 5%;
@@ -315,7 +322,7 @@ body {
     background-color: #ffffff;
 }
 
-.inputzin{
+.inputzin {
     margin-top: 0%;
     margin-left: 15%;
     padding: 20px;
@@ -327,7 +334,7 @@ body {
     background-color: #196ca7d4;
 }
 
-.inputzin:hover{
+.inputzin:hover {
     border: 3px solid black;
 }
 
@@ -338,68 +345,78 @@ body {
 
 .flipswitch {
     position: relative;
-    width: 30px;
-  }
-  .flipswitch input[type=checkbox] {
+    width: 60px;
+}
+
+.flipswitch input[type=checkbox] {
     display: none;
-  }
-  .flipswitch-label {
+}
+
+.flipswitch-label {
     display: block;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid #000000;
+    border: 1px solid #999999;
     border-radius: 10px;
-  }
-  .flipswitch-inner {
+}
+
+.flipswitch-inner {
     width: 200%;
     margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
-  }
-  .flipswitch-inner:before, .flipswitch-inner:after {
+}
+
+.flipswitch-inner:before,
+.flipswitch-inner:after {
     float: left;
     width: 50%;
-    height: 12px;
+    height: 15px;
     padding: 0;
-    line-height: 12px;
+    line-height: 15px;
     font-size: 8px;
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
     font-weight: bold;
     box-sizing: border-box;
-  }
-  .flipswitch-inner:before {
-    content: "ON";
+}
+
+.flipswitch-inner:before {
+    content: "";
     padding-left: 5px;
-    background-color: #000000;
+    background-color: #FFFFFF;
     color: #FFFFFF;
-  }
-  .flipswitch-inner:after {
-    content: "OFF";
-    padding-right: 0px;
-    background-color: #EBEBEB;
-    color: #000000;
+}
+
+.flipswitch-inner:after {
+    content: "";
+    padding-right: 5px;
+    background-color: #000000;
+    color: #888888;
     text-align: right;
-  }
-  .flipswitch-switch {
-    width: 12px;
+}
+
+.flipswitch-switch {
+    width: 15px;
     margin: 0px;
     background: #FFFFFF;
-    border: 1px solid #000000;
+    border: 1px solid #999999;
     border-radius: 10px;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 16px;
-    transition: 0.3s ease-in 0s;
-  }
-  .flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
-    margin-left: 0;
-  }
-  .flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
-    right: 0;
-  }
+    right: 43px;
+    transition: all 0.3s ease-in 0s;
+}
 
-.post{
+.flipswitch-cb:checked+.flipswitch-label .flipswitch-inner {
+    margin-left: 0;
+}
+
+.flipswitch-cb:checked+.flipswitch-label .flipswitch-switch {
+    right: 0;
+}
+
+.post {
     display: flex;
     flex-direction: column;
     width: 65%;
@@ -417,11 +434,12 @@ body {
 .post .headerpost label {
     transform: translateY(25%);
 }
+
 .imgmenucoment {
-        transform: translate(710px, 10px);
+    transform: translate(710px, 10px);
 }
 
-.post img{
+.post img {
     width: 100px;
 }
 
@@ -432,7 +450,7 @@ body {
     transform: translateY(83px);
 }
 
-#comentario{
+#comentario {
     margin: 0px;
     width: 50%;
     height: 4vh;
@@ -442,7 +460,17 @@ body {
     cursor: pointer;
 }
 
-#like{
+#resposta {
+    margin: 0px;
+    width: 50%;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 0px 0px 0px 10px;
+    background-color: #cdcdcdb9;
+    cursor: pointer;
+}
+
+#like {
     margin: 0px;
     width: 25%;
     height: 4vh;
@@ -451,7 +479,7 @@ body {
     cursor: pointer;
 }
 
-#dislike{
+#dislike {
     margin: 0px;
     width: 25%;
     height: 4vh;
@@ -460,4 +488,3 @@ body {
     background-color: #cdcdcdb9;
     cursor: pointer;
 }
-  

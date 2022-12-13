@@ -20,10 +20,12 @@
             <div class="divPesquisa">
                 <input type="text" placeholder="Pesquisar..." class="pesquisa">
             </div>
-            <div class="divUser">
-                <img src="../../assets/imglogin.png" alt="" class="fotoUser">
-                <p class="nomeUser">Nome</p>
-            </div class="divPesquisa">
+            <a href="../perfil/perfil.html" style="width: 7%;">
+                <div class="divUser">
+                    <img src="../../assets/imglogin.png" alt="" class="fotoUser">
+                    <p class="nomeUser">Nome</p>
+                </div>
+            </a>
             <img src="../../assets/mais.png" alt="" class="imgmenu" onclick="abrirmenu()" style="cursor: pointer;">
         </div>
         <div class="menu modal1">
@@ -51,12 +53,13 @@
             <input type="text" onclick="criarPost()" style="cursor: pointer;" class="inputzin" placeholder="Criar Post"
                 style=>
         </div>
-        
+
         <div class="post" style="background-color: white;">
             <div class="headerpost">
                 <img src="../../assets/imglogin.png" alt="" id="imgUser">
                 <label id="nome">Nome</label>
-                <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()" style="cursor: pointer; width: 20px; height: 20px;">
+                <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()"
+                    style="cursor: pointer; width: 20px; height: 20px;">
             </div>
             <div class="bodypost">
                 <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
@@ -88,10 +91,25 @@
         </div>
         <div class="comenta modalcomenta">
             <div class="headercomenta">
-                <textarea name="" id="" cols="112" rows="5" style="resize: none;" placeholder="Comente aqui..."></textarea>
+                <textarea name="" id="" cols="112" rows="5" style="resize: none;"
+                    placeholder="Comente aqui..."></textarea>
             </div>
             <div class="bodycomenta">
-
+                <div class="headerpost">
+                    <img src="../../assets/imglogin.png" alt="" id="imgUser">
+                    <label id="nome">Nome</label>
+                    <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()"
+                        style="cursor: pointer; width: 20px; height: 20px;">
+                </div>
+                <div class="bodypost">
+                    <textarea name="post" id="post" cols="110" rows="13"
+                        style="resize: none; transform: translateX(3%);" maxlength="5000" readonly></textarea>
+                </div>
+                <div class="footerpost">
+                    <button id="resposta" onclick="responde()">Responder</button>
+                    <button id="like">Like</button>
+                    <button id="dislike">Dislike</button>
+                </div>
             </div>
             <div class="footercomenta">
 
