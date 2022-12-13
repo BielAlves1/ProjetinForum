@@ -1,13 +1,11 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function Home() {
-
-    return (
+export default function Perfil() {
+    return(
         <View style={style.container}>
-             <Text>TELA HOME</Text>
+            <Text>TELA PERFIL</Text>
         </View>
-    )
+    );
 }
 
 const style = StyleSheet.create({

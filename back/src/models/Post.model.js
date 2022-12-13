@@ -1,5 +1,5 @@
 const toCreate = (model) =>{
-    return `INSERT INTO posts VALUES (default, '${model.id_user}', '${model.id_subcat}', curdate(), '${model.conteudo}')`;
+    return `INSERT INTO posts VALUES (default, '${model.id_user}', '${model.id_subcat}', curdate(), '${model.conteudo}', null, null)`;
 }
 
 const toReadAll = () => {

@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TextInput, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, TextInput, Button, Image, TouchableOpacity, Alert } from 'react-native';
 
-const dog = require('../../../assets/imglogin.png');
+const logo = require('../../../assets/imglogin.png');
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {
-        Logar()
-      });
-
-      function Logar() {
+    const Logar = async () => {
         let credenciais = {
             "email": email,
             "senha": password,
@@ -28,23 +24,41 @@ export default function Login({navigation}) {
                     navigation.navigate("Home")
                 }
                 else {
-                   console.log("Email ou Senha Incorretas")
+                    console.log("Credeciais Incorretas")
                 }
             })
+            .catch((error) => {
+                console.log('error', error);
+              });
     };
 
-    return(
-        <View style={style.container}>
-            <Image style={style.imgLogin} source={{uri:dog}} />
-    
-            <TextInput style={style.inputzin} placeholder='Digite o seu Email' placeholderTextColor={"#00000077"} onChangeText={(value) => {setEmail(value)}} />
-            <TextInput style={style.inputzin} placeholder='Digite a sua Senha' placeholderTextColor={"#00000077"} secureTextEntry={true} onChangeText={(value) => {setPassword(value)}} />
+    const MsgAlert = () =>
+    Alert.alert(
+      "Alert Title",
+      "My Alert Msg",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
 
-            <TouchableOpacity style={style.btLogin} onPress={()=>{Logar()}}>
-                <Text style={style.text}>Login</Text>
-            </TouchableOpacity>
+    return (
+        <ScrollView>
+            <View style={style.container}>
+                <Image style={style.imgLogin} source={{ uri: logo }} />
 
-        </View>
+                <TextInput style={style.inputzin} placeholder='Digite o seu Email' placeholderTextColor={"#004c82"} onChangeText={(value) => { setEmail(value) }} />
+                <TextInput style={style.inputzin} placeholder='Digite a sua Senha' placeholderTextColor={"#004c82"} secureTextEntry={true} onChangeText={(value) => { setPassword(value) }} />
+
+                <TouchableOpacity style={style.btLogin} onPress={() => { Logar() }}>
+                    <Text style={style.text}>Login</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
     )
 }
 
@@ -85,9 +99,9 @@ const style = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 24,
-      },
+    },
     btLogin: {
-        marginTop: '15%',
+        marginTop: '10%',
         height: '50px',
         width: '75%',
         backgroundColor: '#328ecb',
@@ -102,10 +116,10 @@ const style = StyleSheet.create({
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
         elevation: 24,
-      },
+    },
     text: {
         fontWeight: 'bold',
         fontSize: "25px",
         color: 'white'
-        }
+    }
 });

@@ -11,7 +11,7 @@ const toReadUserName = (model) => {
 }
 
 const toLogin = (model) => {
-    return `SELECT * FROM usuarios WHERE email = '${model.email}'`;
+    return `SELECT * FROM usuarios WHERE email = '${model.email}' and senha = '${model.senha}'`;
 }
 
 const toCreate = (model) => {

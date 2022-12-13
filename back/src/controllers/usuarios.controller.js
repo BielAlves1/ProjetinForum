@@ -36,6 +36,7 @@ const listarUsuario = (req, res) => {
 
 const login = (req, res) => {
     const user = req.body;
+    
     con.query(Usuario.toLogin(user), (err, result) => {
         if (err == null) {
             if (user.email == result[0].email && user.senha == result[0].senha) {
@@ -53,6 +54,8 @@ const login = (req, res) => {
                         res.status(404).json(err).end();
                     }
                 });
+            }else {
+                res.status(406).json(err).end();
             }
         } else {
             res.status(400).json(err).end()
