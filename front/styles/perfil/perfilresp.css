@@ -96,36 +96,9 @@
     transform: translateY(83px);
 }
 
-.btncomenta{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-}
-
-#comentario {
-    margin: 0px;
-    width: 50%;
-    height: 4vh;
-    border: 1px solid black;
-    border-radius: 0px 0px 0px 10px;
-    background-color: #cdcdcdb9;
-    cursor: pointer;
-}
-
-#resposta {
-    margin: 0px;
-    width: 100%;
-    height: 4vh;
-    border: 1px solid black;
-    border-radius: 0px 0px 0px 10px;
-    background-color: #cdcdcdb9;
-    cursor: pointer;
-}
-
 #like {
     margin: 0px;
-    width: 25%;
+    width: 50%;
     height: 4vh;
     border: 1px solid black;
     background-color: #cdcdcdb9;
@@ -134,27 +107,11 @@
 
 #dislike {
     margin: 0px;
-    width: 25%;
+    width: 50%;
     height: 4vh;
     border: 1px solid black;
     border-radius: 0px 0px 10px 0px;
     background-color: #cdcdcdb9;
-    cursor: pointer;
-}
-
-input[type="file"] {
-    display: none;
-}
- label {
-    padding: 20px 10px;
-    width: 200px;
-    background-color: rgb(21, 78, 153);
-    color: #FFF;
-    text-transform: uppercase;
-    text-align: center;
-    display: block;
-    margin-top: 15px;
-    margin-left: 6%;
     cursor: pointer;
 }
 

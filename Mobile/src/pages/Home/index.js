@@ -1,12 +1,37 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function Home() {
+    const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        fetch("http://localhost:5000/posts/readAll")
+        .then(resp => {return resp.json()})
+        .then(post => {
+          setPosts(post);
+        })
+      });
+    
     return (
-        <View style={style.container}>
-             <Text>TELA HOME</Text>
-        </View>
+        <View style={style.container}> 
+        {
+          (posts !== undefined && posts !== null)
+          ?
+          posts.map((info, index) => {
+            return (
+                <View style={style.post} key={index}>
+                    <Text style={style.text}>PET: {info.pet}</Text>
+                    <Text style={style.text}>Veterinário: {info.vet}</Text>
+                    <Text style={style.text}>Vacina: {info.vacina}</Text>
+                    <Text style={style.text}>Data: {info.data}</Text>
+                </View>
+                )
+            })
+          :
+          <View>
+            <Image source={{uri:"https://acegif.com/wp-content/uploads/loading-48.gif"}} />
+          </View>
+        }
+      </View>
     )
 }
 
