@@ -1,5 +1,4 @@
 const cadastro = document.querySelector("#cadastro");
-var avatarBase64 = null;
 var usuarios = [];
 
 cadastro.addEventListener('submit', (e) => {
@@ -7,8 +6,7 @@ cadastro.addEventListener('submit', (e) => {
     const usuario = {
         email: cadastro.email.value,
         senha: cadastro.senha.value,
-        nome_user: cadastro.nome.value,
-        avatar: avatarBase64
+        nome_user: cadastro.nome.value
     }
     const options = {
         method: 'POST',

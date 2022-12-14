@@ -1,26 +1,26 @@
-const uripost = 'http://localhost:5000/posts/readAll';
+const uripost = 'http://localhost:5000/respostas/readAll';
 const card = document.querySelector('.post');
-var posts = [];
+var respostas = [];
 
 const load = () => {
     const options = { method: 'GET' };
     fetch(uripost, options)
         .then(resp => resp.json())
         .then(resp => {
-            posts = resp
+            respostas = resp
             readCards();
         })
         .catch(err => console.error(err));
 }
 
 const readCards = () => {
-    posts.forEach(e => {
-        let posts = card.cloneNode(true);
-        posts.classList.remove("modalpost");
-        posts.querySelector("#conteudo").innerHTML += e.conteudo;
-        posts.querySelector("#likes").innerHTML += e.likes;
-        posts.querySelector("#dislikes").innerHTML += e.dislikes;
-        posts.querySelector(".main").appendChild(posts);
+    respostas.forEach(e => {
+        let resposta = card.cloneNode(true);
+        resposta.classList.remove("modalpost");
+        resposta.querySelector("#conteudo").innerHTML += e.conteudo;
+        resposta.querySelector("#likes").innerHTML += e.likes;
+        resposta.querySelector("#dislikes").innerHTML += e.dislikes;
+        resposta.querySelector(".main").appendChild(resposta);
     });
 }
 

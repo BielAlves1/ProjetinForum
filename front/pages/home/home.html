@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="../../assets/imglogin.png">
 </head>
 
-<body>
+<body onload="load()">
     <header>
         <div class="header">
             <div class="divLogo">
@@ -18,7 +18,8 @@
                 <img src="../../assets/blueddit.png" alt="" class="logo" style="margin-bottom: 30px;">
             </div>
             <div class="divPesquisa">
-                <input type="text" placeholder="Pesquisar..." class="pesquisa">
+                <input type="search" placeholder="Pesquisar..." id="pesquisa">
+                <button type="button" onclick="filtrar()" style="width: 10%; height: 3vh;">Filtrar</button>
             </div>
             <a href="../perfil/perfil.html" style="width: 7%;">
                 <div class="divUser">
@@ -65,7 +66,7 @@
                 <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
                     maxlength="5000" readonly></textarea>
             </div>
-            <div class="footerpost">
+            <div class="footerpost">            
                 <button id="comentario" onclick="comenta()">Comentar</button>
                 <button id="like">Like</button>
                 <button id="dislike">Dislike</button>

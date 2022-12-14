@@ -6,13 +6,10 @@
 }
 
 html {
-    overflow-y: scroll;
 }
 
 body {
     background-color: #d0d0d0e3;
-    scroll-margin-block-start: 10px;
-    scroll-margin-block-end: 800px;
 
 }
 
@@ -33,11 +30,15 @@ body {
 .divPesquisa {
     border: none;
     margin-left: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
 }
 
-.pesquisa {
+#pesquisa {
     padding-left: 20px;
     border-radius: 10px;
+    margin-right: 20px;
     border: none;
     width: 870px;
     height: 5vh;
@@ -81,7 +82,7 @@ body {
     position: fixed;
     background-color: #9999998a;
     width: 70%;
-    height: 100vh;
+    max-height: max-content;
     margin-left: 15%;
 }
 
