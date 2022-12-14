@@ -1,11 +1,14 @@
 const con = require('../forumDAO.js');
+const multer = require('multer');
+const upload = multer().single('imagem');
+
 const Post = require('../models/Post.model');
 
 
 const listarPosts = (req, res) => {
     con.query(Post.toReadAll(), (err, result) => {
         if (err == null) {
-            res.status(200).json(result).end();
+            res.status(200).json(Post.toAscii(result)).end();
         }else{
             res.status(400).json(err).end();
         }
@@ -44,25 +47,19 @@ const listarPostData = (req, res) => {
     });
 }
 
-const cadastrarPost = (req, res) => {
-    con.query(Post.toCreate(req.body), (err, result) => {
-        if (err == null){
-            res.status(201).json().end();
-        }else{
-            res.status(400).json(err).end();
-        }
-    })
-}
-
-const cadastrarImgPost = (req, res) => {
+const cadastrarPost= (req, res) => {
     upload(req, res, (err) => {
-        con.query(Usuario.toCreateImg(req.body, req.file), (err, result) => {
-            if (err == null) {
-                res.status(201).end(Usuario.toAscii(result));
-            } else {
-                res.status(400).json(err).end();
-            }
-        });
+        if (err)
+            res.status(500).json({ error: 1, payload: err }).end();
+        else {
+            con.query(Post.toCreate(req.body, req.arquivo), (err, result) => {
+                if (err == null){
+                    res.redirect('http://127.0.0.1:5500/front/pages/home/home.html')
+                }else{
+                    res.status(400).json(err).end();
+                }
+            })
+        }
     })
 }
 
@@ -96,7 +93,6 @@ module.exports = {
     listarPostCat,
     listarPostData,
     cadastrarPost,
-    cadastrarImgPost,
     alterarPost,
     excluirPost
 }

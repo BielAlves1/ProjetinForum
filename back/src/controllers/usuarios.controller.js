@@ -1,7 +1,10 @@
 const con = require('../forumDAO.js');
 const jwt = require('jsonwebtoken');
-const Usuario = require('../models/Usuario.model');
+const multer = require('multer');
+const upload = multer().single('imagem');
 require('dotenv').config();
+
+const Usuario = require('../models/Usuario.model');
 
 const listarView = (req, res) => {
     con.query(Usuario.toReadAll(), (err, result) => {
@@ -75,13 +78,17 @@ const cadastrarUsuario = (req, res) => {
 
 const cadastrarPerfilUsuario = (req, res) => {
     upload(req, res, (err) => {
-        con.query(Usuario.toCreatePerfil(req.body, req.file), (err, result) => {
-            if (err == null) {
-                res.status(201).end(Usuario.toAscii(result));
-            } else {
-                res.status(400).json(err).end();
-            }
-        });
+        if (err)
+            res.status(500).json({ error: 1, payload: err }).end();
+        else {
+            con.query(Usuario.toCreatePerfil(req.body, req.file), (err, result) => {
+                if (err == null){
+                    res.redirect('http://127.0.0.1:5500/front/pages/perfil/perfil.html')
+                }else{
+                    res.status(400).json(err).end();
+                }
+            })
+        }
     })
 }
 

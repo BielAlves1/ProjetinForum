@@ -42,17 +42,10 @@ create table posts(
     id_user int not null,
     id_subcat int not null,
     data DATETIME not null,
-    conteudo varchar(5000) not null,    
-    likes integer,
-    dislikes integer,
+    conteudo varchar(5000) not null,
+    img mediumblob,    
     foreign key (id_user) references usuarios(id_user),
     foreign key (id_subcat) references sub_categorias(id_subcat)
-);
-
-create table img_posts(
-    id_pub int not null,
-    img mediumblob,
-    foreign key (id_pub) references posts(id_pub) on delete cascade
 );
 
 create table comentarios(
@@ -61,8 +54,6 @@ create table comentarios(
     id_pub int not null,
     comentario varchar(5000) not null,
     data DATETIME not null,
-    likes integer,
-    dislikes integer,
     foreign key (id_user) references usuarios(id_user),
     foreign key (id_pub) references posts(id_pub) on delete cascade
 );
@@ -73,8 +64,6 @@ create table respostas(
     id_comentario int not null,
     resposta varchar(5000) not null,
     data DATETIME not null,
-    likes integer,
-    dislikes integer,
     foreign key (id_user) references usuarios(id_user),
     foreign key (id_comentario) references comentarios(id_comentario) on delete cascade
 );
@@ -95,7 +84,6 @@ describe profiles;
 describe categorias;
 describe sub_categorias;
 describe posts;
-describe img_posts;
 describe comentarios;
 describe respostas;
 describe favoritos;
@@ -125,29 +113,25 @@ insert into sub_categorias values
 (default, 3, 'Lil Nas X', 'Na direção do League of Legends');
 
 insert into posts values
-(default , 2, 2, '2022/12/08 20:23:00', 'Cleiton Votaria no Bolsonaro?', 0, 999),
-(default , 2, 1, '2022/12/02 17:32:00', 'Odeio molieres na copa', 999, 0),
-(default , 4, 1, '2022/12/02 16:05:00', 'CADÊ O GABIGOL NA COPA?', 5, 0),
-(default , 3, 3, '2022/12/01 22:48:00', 'O cara viro adm do lolKLKKKKKKKK', 0, 0);
-
-insert into img_posts values
-(1, to_base64(LOAD_FILE('https://sm.ign.com/ign_br/gallery/e/every-char/every-character-in-god-of-war-ragnarok_pcms.jpg'))),
-(3, to_base64(LOAD_FILE('https://tntsports.com.br/__export/1670610642330/sites/esporteinterativo/img/2022/11/07/gabigol-selecao-brasileira-3_1.jpg_1902800913.jpg'))),
-(4, to_base64(LOAD_FILE('https://static1-br.millenium.gg/articles/5/11/28/5/@/131432-lil-nas-x-lol-article_image_t-1.png')));
+(default , 2, 2, '2022/12/08 20:23:00', 'Cleiton Votaria no Bolsonaro?', to_base64(LOAD_FILE('https://sm.ign.com/ign_br/gallery/e/every-char/every-character-in-god-of-war-ragnarok_pcms.jpg'))),
+(default , 2, 1, '2022/12/02 17:32:00', 'Odeio molieres na copa', null),
+(default , 4, 1, '2022/12/02 16:05:00', 'CADÊ O GABIGOL NA COPA?', to_base64(LOAD_FILE('https://tntsports.com.br/__export/1670610642330/sites/esporteinterativo/img/2022/11/07/gabigol-selecao-brasileira-3_1.jpg_1902800913.jpg'))),
+(default , 3, 3, '2022/12/01 22:48:00', 'O cara viro adm do lolKLKKKKKKKK', to_base64(LOAD_FILE('https://static1-br.millenium.gg/articles/5/11/28/5/@/131432-lil-nas-x-lol-article_image_t-1.png')));
 
 insert into comentarios values
-(default, 4, 1, 'Claramente sim powKLLK', '2022/12/09 20:41:00', 9, 0),
-(default, 3, 2, 'Omi na netKKKL', '2022/12/02 18:04:00', 0, 99),
-(default, 2, 3, 'Em casa pq é muito buxaKKJKKJK', '2022/12/02 16:32:00', 11, 249),
-(default, 4, 4, 'Lil Nas X God apenas.', '2022/12/09 23:57:00', 9, 0);
+(default, 4, 1, 'Claramente sim powKLLK', '2022/12/09 20:41:00'),
+(default, 3, 2, 'Omi na netKKKL', '2022/12/02 18:04:00'),
+(default, 2, 3, 'Em casa pq é muito buxaKKJKKJK', '2022/12/02 16:32:00'),
+(default, 4, 4, 'Lil Nas X God apenas.', '2022/12/09 23:57:00');
 
 insert into respostas values
-(default, 2, 1, 'EntãoKKK', '2022/12/09 21:01:00', 0, 0),
-(default, 3, 3, 'RESPEITA O DEUS DO MENGÃO', '2022/12/02 16:48:00', 7, 0);
+(default, 2, 1, 'EntãoKKK', '2022/12/09 21:01:00'),
+(default, 3, 3, 'RESPEITA O DEUS DO MENGÃO', '2022/12/02 16:48:00');
 
 insert into favoritos values
 (default, 2, 2),
 (default, 2, 1),
+(default, 2, 3),
 (default, 3, 3),
 (default, 3, 1),
 (default, 4, 1),
@@ -159,36 +143,45 @@ select * from profiles;
 select * from categorias;
 select * from sub_categorias;
 select * from posts;
-select * from img_posts;
 select * from comentarios;
 select * from respostas;
 select * from favoritos;
 
-create view vw_perfilUser as
-select u.id_user, u.id_role, u.email, u.senha, u.nome_user, r.tipo, p.bio, p.avatar from usuarios u
-inner join roles r
-on u.id_role = r.id_role
-join profiles p
-on u.id_user = p.id_user;
+CREATE VIEW vw_posts AS
+SELECT p.id_pub, p.id_user, p.data, p.conteudo, p.img, u.nome_user from usuarios u
+INNER JOIN posts p 
+ON p.id_user = u.id_user
+ORDER BY p.id_pub DESC;
 
-select * from vw_perfilUser;
+select * from vw_posts;
 
-create view vw_geral as
-select u.id_user, u.email, u.nome_user, pr.avatar, c.id_categoria, c.nome_categoria, sc.id_subcat, sc.nome_subcat, p.id_pub, p.id_user as id_userPub, p.data, p.conteudo, p.likes, p.dislikes, 
-com.id_comentario, com.id_user as id_userComent , com.comentario, com.data as data_coment, com.likes as likes_coment, com.dislikes as dislikes_coment,
-res.id_resp, res.id_user as id_userResp, res.resposta, res.data as data_resp, res.likes as likes_resp, res.dislikes as dislikes_resp
-from usuarios u
-inner join profiles pr
-on u.id_user = pr.id_user
-join posts p
+CREATE VIEW vw_resp AS
+SELECT r.*, u.nome_user FROM respostas r
+INNER JOIN usuarios u 
+ON r.id_user = u.id_user;
+
+select * from vw_resp;
+
+CREATE VIEW vw_coment AS
+SELECT p.id_pub, c.id_comentario, c.comentario, c.data as data_coment, u.nome_user, r.resposta, r.nome_user as nome_resp, r.data as data_resp from posts p
+INNER JOIN comentarios c 
+ON c.id_pub = p.id_pub
+INNER JOIN usuarios u
+ON u.id_user = c.id_user
+LEFT JOIN vw_resp r 
+ON r.id_comentario = c.id_comentario;
+
+select * from vw_coment;
+
+CREATE VIEW vw_usuarios AS
+SELECT u.*, p.bio, p.avatar, c.nome_categoria, r.tipo from usuarios u
+LEFT JOIN profiles p
 on u.id_user = p.id_user
-join sub_categorias sc
-on p.id_subcat = sc.id_subcat
-join categorias c
-on sc.id_categoria = c.id_categoria
-join comentarios com
-on p.id_pub = com.id_pub
-join respostas res
-on com.id_comentario = res.id_comentario;
+LEFT JOIN favoritos f 
+on u.id_user = f.id_user
+LEFT JOIN categorias c 
+on c.id_categoria = f.id_categoria
+INNER JOIN roles r 
+on r.id_role = u.id_role;
 
-select * from vw_geral;
+select * from vw_usuarios;

@@ -1,5 +1,5 @@
 const toReadAll = () => {
-    return 'SELECT * FROM vw_perfilUser';
+    return 'SELECT * FROM vw_usuarios';
 }
 
 const toRead = () => {
@@ -7,7 +7,7 @@ const toRead = () => {
 }
 
 const toReadUserName = (model) => {
-    return `SELECT * FROM vw_perfilUser WHERE nome_user like '%${model.nome_user}%'`;
+    return `SELECT * FROM vw_usuarios WHERE nome_user like '%${model.nome_user}%'`;
 }
 
 const toLogin = (model) => {
@@ -19,8 +19,12 @@ const toCreate = (model) => {
 }
 
 const toCreatePerfil = (dados, arquivo) =>{
-    dados.avatar =  arquivo.buffer.toString('base64');
-    return `INSERT INTO profiles VALUE('${dados.id_user}','${dados.bio}', '${dados.avatar}')`;
+    if (arquivo != null || arquivo != undefined){
+        dados.avatar =  arquivo.buffer.toString('base64');
+        return `INSERT INTO profiles VALUE('${dados.id_user}','${dados.bio}', '${dados.avatar}')`;
+    }else {
+        return `INSERT INTO profiles VALUE('${dados.id_user}','${dados.bio}', null)`;
+    }
 }
 
 const toAscii = (dados)=>{
