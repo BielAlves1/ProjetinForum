@@ -113,7 +113,7 @@ insert into sub_categorias values
 (default, 3, 'Lil Nas X', 'Na direção do League of Legends');
 
 insert into posts values
-(default , 2, 2, '2022/12/08 20:23:00', 'Cleiton Votaria no Bolsonaro?', to_base64(LOAD_FILE('https://sm.ign.com/ign_br/gallery/e/every-char/every-character-in-god-of-war-ragnarok_pcms.jpg'))),
+(default , 2, 2, '2022/12/08 20:23:00', 'Cleiton Votaria no Bolsonaro?', to_base64(LOAD_FILE('D:/SENAI2022/ProjetinForum/docs/assets/clieton.jpg'))),
 (default , 2, 1, '2022/12/02 17:32:00', 'Odeio molieres na copa', null),
 (default , 4, 1, '2022/12/02 16:05:00', 'CADÊ O GABIGOL NA COPA?', to_base64(LOAD_FILE('https://tntsports.com.br/__export/1670610642330/sites/esporteinterativo/img/2022/11/07/gabigol-selecao-brasileira-3_1.jpg_1902800913.jpg'))),
 (default , 3, 3, '2022/12/01 22:48:00', 'O cara viro adm do lolKLKKKKKKKK', to_base64(LOAD_FILE('https://static1-br.millenium.gg/articles/5/11/28/5/@/131432-lil-nas-x-lol-article_image_t-1.png')));

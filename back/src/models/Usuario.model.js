@@ -19,7 +19,7 @@ const toCreate = (model) => {
 }
 
 const toCreatePerfil = (dados, arquivo) =>{
-    if (arquivo != null || arquivo != undefined){
+    if (arquivo != null){
         dados.avatar =  arquivo.buffer.toString('base64');
         return `INSERT INTO profiles VALUE('${dados.id_user}','${dados.bio}', '${dados.avatar}')`;
     }else {
