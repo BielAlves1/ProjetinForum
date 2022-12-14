@@ -1,14 +1,16 @@
-const uripost = 'http://localhost:5000/posts'; 
-const urisub_cat = 'http://localhost:5000/subCategorias'; 
-const modal = document.querySelector(".criarpost")
-const modal1 = document.querySelector(".menu")
-const modalcomenta = document.querySelector(".comenta")
-const card = document.querySelector('.post');
+const uri = 'http://localhost:5000/posts';
+const modal = document.querySelector(".criarpost");
+const modal1 = document.querySelector(".menu");
+const modalcomenta = document.querySelector(".comenta");
+const card = document.querySelector(".post");
+const cadastro = document.querySelector("#cadastro");
+const alteracao = document.querySelector("#alteracao");
+var avatarBase64 = null;
 var posts = [];
 
 const load = () => {
     const options = { method: 'GET' };
-    fetch(uripost + '/readAll', options)
+    fetch(uri + '/readAll', options)
         .then(resp => resp.json())
         .then(resp => {
             posts = resp
@@ -19,23 +21,16 @@ const load = () => {
 
 const readCards = () => {
     posts.forEach(e => {
-        let posts = card.cloneNode(true);
-        posts.classList.remove("modalpost");
-        posts.querySelector("#conteudo").innerHTML += e.conteudo;
-        posts.querySelector("#likes").innerHTML += e.likes;
-        posts.querySelector("#dislikes").innerHTML += e.dislikes;
-        posts.querySelector(".main").appendChild(posts);
+        let post = card.cloneNode(true);
+        post.classList.remove("modalpost");
+        post.querySelector("#data").innerHTML += e.data != null ? e.data.toLocaleString('pt-BR', { timeZone: 'UTC' }).replace("T", " ").split(".")[0] : e.data;
+        post.querySelector("#conteudo").innerHTML += e.conteudo;
+        post.querySelector("#likes").innerHTML += e.conteudo;
+        post.querySelector("#dislikes").innerHTML += e.conteudo;
+        document.querySelector(".main").appendChild(post);
     });
 }
 
-function filtrar() {
-    var termo = $('#pesquisa').val().toUpperCase();
-    $(urisub_cat).each(function() { 
-       if($(this).html().toUpperCase().indexOf(termo) === -1) {
-           $(this).hide();
-       }
-    });
-}
 
 function criarPost() {
     modal.classList.remove("modal");

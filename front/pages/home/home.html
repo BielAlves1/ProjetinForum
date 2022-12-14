@@ -18,8 +18,7 @@
                 <img src="../../assets/blueddit.png" alt="" class="logo" style="margin-bottom: 30px;">
             </div>
             <div class="divPesquisa">
-                <input type="search" placeholder="Pesquisar..." id="pesquisa">
-                <button type="button" onclick="filtrar()" style="width: 10%; height: 3vh;">Filtrar</button>
+                <input type="text" placeholder="Pesquisar..." class="pesquisa">
             </div>
             <a href="../perfil/perfil.html" style="width: 7%;">
                 <div class="divUser">
@@ -55,21 +54,22 @@
                 style=>
         </div>
 
-        <div class="post" style="background-color: white;">
+        <div class="post modalpost" style="background-color: white;">
             <div class="headerpost">
                 <img src="../../assets/imglogin.png" alt="" id="imgUser">
                 <label id="nome">Nome</label>
+                <p id="data"></p>
                 <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()"
                     style="cursor: pointer; width: 20px; height: 20px;">
             </div>
             <div class="bodypost">
-                <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
+                <textarea name="post" id="conteudo" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
                     maxlength="5000" readonly></textarea>
             </div>
-            <div class="footerpost">            
+            <div class="footerpost">
                 <button id="comentario" onclick="comenta()">Comentar</button>
-                <button id="like">Like</button>
-                <button id="dislike">Dislike</button>
+                <button id="likes">Like</button>
+                <button id="dislikes">Dislike</button>
             </div>
             <div class="menupost modalpost">
                 <img onclick="modal1.classList.add('modal1')" src="../../assets/fechar.png" alt=""
