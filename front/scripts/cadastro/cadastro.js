@@ -4,6 +4,7 @@ var usuarios = [];
 cadastro.addEventListener('submit', (e) => {
 	e.preventDefault();
     const usuario = {
+        id_role: 2,
         email: cadastro.email.value,
         senha: cadastro.senha.value,
         nome_user: cadastro.nome.value

@@ -43,19 +43,22 @@
                 <p style="font-size:x-large; margin-left: 25%; margin-top: 10%;">GuiGm</p>
             </div>
         </div>
-        <div class="post" style="background-color: white;">
+        <div class="post modalpost" style="background-color: white;">
             <div class="headerpost">
                 <img src="../../assets/imglogin.png" alt="" id="imgUser">
                 <p id="nome">Nome</p>
+                <p id="data" style="margin-top: 60px;"></p>
+                <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()"
+                    style="cursor: pointer; width: 20px; height: 20px; transform: translate(700px, 20px);">
             </div>
             <div class="bodypost">
-                <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
+                <textarea name="post" id="conteudo" cols="110" rows="10" style="resize: none; transform: translateX(3%);"
                     maxlength="5000" readonly></textarea>
             </div>
             <div class="footerpost">
-                <button id="comentario" onclick="comenta()"><i class="fa-solid fa-comment"> Comentar</i></button>
-                <button id="like">Like</button>
-                <button id="dislike">Dislike</button>
+                <button id="comentario" onclick="comenta()">Comentar</button>
+                <button id="likes">Like</button>
+                <button id="dislikes">Dislike</button>
             </div>
         </div>
     </main>

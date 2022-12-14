@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="../../assets/imglogin.png">
     <title>Respostas</title>
 </head>
+
 <body onload="load()">
     <header>
         <div class="header">
@@ -25,25 +27,30 @@
         <nav id='menu'>
             <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
             <ul>
-              <li><a href='../home/home.html'>Home</a></li>
-              <li><a style="cursor: pointer;" href="../perfil/perfil.html">Posts</a></li>
-              <li><a style="cursor: pointer;" href="../perfil/perfilcomenta.html">Comentarios</a></li>
-              <li><a style="cursor: pointer;">Respostas</a></li>
+                <li><a href='../home/home.html'>Home</a></li>
+                <li><a style="cursor: pointer;" href="../perfil/perfil.html">Posts</a></li>
+                <li><a style="cursor: pointer;" href="../perfil/perfilcomenta.html">Comentarios</a></li>
+                <li><a style="cursor: pointer;">Respostas</a></li>
             </ul>
-          </nav>
+        </nav>
         <div class="perfil">
             <div class="user">
                 <div for="foto">
-                    <img src="../../assets/imglogin.png" alt="" style="width: 65%; border: 2px solid black; border-radius:100%;">    
-                    <input type="file">
+                    <img src="../../assets/imglogin.png" alt=""
+                        style="width: 65%; border: 2px solid black; border-radius:100%;">
+                    <div>
+                        <label for="arquivo">Trocar foto</label>
+                        <input type="file" name="arquivo" id="arquivo">
+                    </div>
                 </div>
                 <p style="font-size:x-large; margin-left: 25%; margin-top: 10%;">GuiGm</p>
             </div>
         </div>
-        <div class="post" style="background-color: white;">
+        <div class="post modalpost" style="background-color: white;">
             <div class="headerpost">
                 <img src="../../assets/imglogin.png" alt="" id="imgUser">
-                <label id="nome">Nome</label>
+                <p id="data" style="margin-top: 60px;"></p>
+                <p id="nome">Nome</p>
             </div>
             <div class="bodypost">
                 <textarea name="post" id="post" cols="110" rows="13" style="resize: none; transform: translateX(3%);"
@@ -57,4 +64,5 @@
     </main>
 </body>
 <script src="../../scripts/perfil/perfilresp.js"></script>
+
 </html>

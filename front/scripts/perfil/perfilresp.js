@@ -1,10 +1,10 @@
-const uripost = 'http://localhost:5000/respostas/readAll';
+const uriresp = 'http://localhost:5000/respostas/read';
 const card = document.querySelector('.post');
 var respostas = [];
 
 const load = () => {
     const options = { method: 'GET' };
-    fetch(uripost, options)
+    fetch(uriresp, options)
         .then(resp => resp.json())
         .then(resp => {
             respostas = resp
@@ -15,12 +15,11 @@ const load = () => {
 
 const readCards = () => {
     respostas.forEach(e => {
-        let resposta = card.cloneNode(true);
-        resposta.classList.remove("modalpost");
-        resposta.querySelector("#conteudo").innerHTML += e.conteudo;
-        resposta.querySelector("#likes").innerHTML += e.likes;
-        resposta.querySelector("#dislikes").innerHTML += e.dislikes;
-        resposta.querySelector(".main").appendChild(resposta);
+        let resp = card.cloneNode(true);
+        resp.classList.remove("modalpost");
+        resp.querySelector("#conteudo").innerHTML += e.resposta;
+        resp.querySelector("#data").innerHTML += e.data != null ? e.data.toLocaleString('pt-BR', { timeZone: 'UTC' }).replace("T", " ").split(".")[0] : e.data;
+        resp.querySelector("main").appendChild(resp);
     });
 }
 

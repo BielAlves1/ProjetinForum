@@ -5,7 +5,24 @@
     overflow: hidden;
 }
 
-.modal{
+input[type="file"] {
+    display: none;
+}
+ label {
+    padding: 20px 10px;
+    width: 200px;
+    background-color: rgb(21, 78, 153);
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    margin-left: 6%;
+    cursor: pointer;
+}
+
+
+.modalpost{
     display: none;
     visibility: hidden;
 }

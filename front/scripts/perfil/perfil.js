@@ -1,10 +1,11 @@
-const uripost = 'http://localhost:5000/posts/readAll';
-const card = document.querySelector('.post');
+const uri = 'http://localhost:5000/posts';
+const card = document.querySelector(".post");
+var avatarBase64 = null;
 var posts = [];
 
 const load = () => {
     const options = { method: 'GET' };
-    fetch(uripost, options)
+    fetch(uri + '/readAll', options)
         .then(resp => resp.json())
         .then(resp => {
             posts = resp
@@ -15,14 +16,14 @@ const load = () => {
 
 const readCards = () => {
     posts.forEach(e => {
-        let posts = card.cloneNode(true);
-        posts.classList.remove("modalpost");
-        posts.querySelector("#conteudo").innerHTML += e.conteudo;
-        posts.querySelector("#likes").innerHTML += e.likes;
-        posts.querySelector("#dislikes").innerHTML += e.dislikes;
-        posts.querySelector(".main").appendChild(posts);
+        let post = card.cloneNode(true);
+        post.classList.remove("modalpost");
+        post.querySelector("#data").innerHTML += e.data != null ? e.data.toLocaleString('pt-BR', { timeZone: 'UTC' }).replace("T", " ").split(".")[0] : e.data;
+        post.querySelector("#conteudo").innerHTML += e.conteudo;
+        document.querySelector("main").appendChild(post);
     });
 }
+
 
 function updatemenu() {
     if (document.getElementById('responsive-menu').checked == true) {
