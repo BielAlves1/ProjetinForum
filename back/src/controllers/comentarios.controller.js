@@ -12,6 +12,16 @@ const listarComentarios = (req, res) => {
     })
 }
 
+const listarView = (req, res) => {
+    con.query(Comentario.toReadView(), (err, result) => {
+        if (err == null) {
+            res.status(200).json(result).end();
+        }else{
+            res.status(400).json(err).end();
+        }
+    })
+}
+
 const cadastrarComentario = async (req, res) => {
     con.query(Comentario.toCreate(req.body), (err, result) => {
         if (err == null) {

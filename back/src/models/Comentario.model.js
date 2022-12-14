@@ -23,6 +23,7 @@ const toDelete = (model) => {
 module.exports = {
     toCreate,
     toReadAll,
+    toReadView,
     toUpdate,
     toDelete
 }

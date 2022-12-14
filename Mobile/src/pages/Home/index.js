@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function Home() {
@@ -19,16 +20,14 @@ export default function Home() {
           posts.map((info, index) => {
             return (
                 <View style={style.post} key={index}>
-                    <Text style={style.text}>PET: {info.pet}</Text>
-                    <Text style={style.text}>Veterinário: {info.vet}</Text>
-                    <Text style={style.text}>Vacina: {info.vacina}</Text>
-                    <Text style={style.text}>Data: {info.data}</Text>
+                    <Text style={style.data}>{info.data}</Text>
+                    <Text style={style.conteudo}> {info.conteudo}</Text>
                 </View>
                 )
             })
           :
           <View>
-            <Image source={{uri:"https://acegif.com/wp-content/uploads/loading-48.gif"}} />
+            <Image style={style.carrega} source={{uri:"https://acegif.com/wp-content/uploads/loading-48.gif"}} />
           </View>
         }
       </View>
@@ -42,5 +41,20 @@ const style = StyleSheet.create({
         height: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
+    },
+    post: {
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+    data: {
+      color: 'white'
+    },
+    conteudo: {
+      color: 'white'
+    },
+    carrega: {
+      width: '100px',
+      height: '100px'
     }
 });
