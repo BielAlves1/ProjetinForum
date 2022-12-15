@@ -245,9 +245,10 @@ body {
     height: 70vh;
     padding: 20px;
     display: flex;
+    border-radius: 10px;
     flex-direction: column;
     justify-content: space-around;
-    box-shadow: 0 0 10px rgba(12, 12, 12, 0.733);
+    box-shadow: 3px 3px 3px 3px rgba(12, 12, 12, 0.548);
 
     animation-name: criandoPost;
     animation-duration: 0.6s;
@@ -260,32 +261,57 @@ body {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     cursor: pointer;
     font-weight: bold;
-    border-radius: 100px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.dados input:hover {
+    border: 1px solid #000000;
+    background-color: #999;
 }
 
 .dados img {
     width: 10vw;
     height: 10vh;
     border-radius: 10px;
-    transform: translateY(-18px);
 }
 
 .dados .headermodal {
     transform: translateY(-50px);
+    width: 100%;
+    height: 11vh;
     display: flex;
 }
 
 .dados .headermodal label {
     transform: translateY(10px);
+    color: white;
 }
 
 .dados .headermodal img {
     width: 7vw;
     height: 10vh;
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.103);
 }
 
 .bodymodal {
     transform: translateY(-70px);
+}
+
+.dados .bodymodal textarea{
+    resize: none; 
+    margin-top: 5%;
+    margin-bottom: 25px; 
+}
+
+.dados .bodymodal input::placeholder{
+    color: #000000;
+}
+
+.dados .bodymodal input{
+    margin-top: 15%;
 }
 
 .dados .comandos {
@@ -337,79 +363,6 @@ body {
 .inputzin::placeholder {
     font-size: 20px;
     color: #FFFFFF;
-}
-
-.flipswitch {
-    position: relative;
-    width: 60px;
-}
-
-.flipswitch input[type=checkbox] {
-    display: none;
-}
-
-.flipswitch-label {
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-    border: 1px solid #999999;
-    border-radius: 10px;
-}
-
-.flipswitch-inner {
-    width: 200%;
-    margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
-}
-
-.flipswitch-inner:before,
-.flipswitch-inner:after {
-    float: left;
-    width: 50%;
-    height: 15px;
-    padding: 0;
-    line-height: 15px;
-    font-size: 8px;
-    color: white;
-    font-family: Trebuchet, Arial, sans-serif;
-    font-weight: bold;
-    box-sizing: border-box;
-}
-
-.flipswitch-inner:before {
-    content: "";
-    padding-left: 5px;
-    background-color: #FFFFFF;
-    color: #FFFFFF;
-}
-
-.flipswitch-inner:after {
-    content: "";
-    padding-right: 5px;
-    background-color: #000000;
-    color: #888888;
-    text-align: right;
-}
-
-.flipswitch-switch {
-    width: 15px;
-    margin: 0px;
-    background: #FFFFFF;
-    border: 1px solid #999999;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 43px;
-    transition: all 0.3s ease-in 0s;
-}
-
-.flipswitch-cb:checked+.flipswitch-label .flipswitch-inner {
-    margin-left: 0;
-}
-
-.flipswitch-cb:checked+.flipswitch-label .flipswitch-switch {
-    right: 0;
 }
 
 .post {

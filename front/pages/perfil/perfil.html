@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/perfil/perfil.css">
     <link rel="icon" type="image/x-icon" href="../../assets/imglogin.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Perfil</title>
 </head>
 <body onload="load()">
@@ -47,7 +49,7 @@
             <div class="headerpost">
                 <img src="../../assets/imglogin.png" alt="" id="imgUser">
                 <p id="nome">Nome</p>
-                <p id="data" style="margin-top: 60px;"></p>
+                <p id="data" style="margin-left: 10px;"></p>
                 <img src="../../assets/mais.png" alt="" class="imgmenucoment" onclick="abrirmenu()"
                     style="cursor: pointer; width: 20px; height: 20px; transform: translate(700px, 20px);">
             </div>
@@ -56,7 +58,7 @@
                     maxlength="5000" readonly></textarea>
             </div>
             <div class="footerpost">
-                <button id="comentario" onclick="comenta()">Comentar</button>
+                    <button id="comentario" onclick="comenta()"><i class="fa-solid fa-comment"></i>Comentar</button>   
                 <button id="likes">Like</button>
                 <button id="dislikes">Dislike</button>
             </div>
